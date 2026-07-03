@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #801418;
+  --color-primary-dark: #4a070b;
+  --color-primary-light: #a31621;
+
+  --color-secondary: #dcc190;
+  --color-secondary-dark: #a9823a;
+  --color-secondary-light: #f2d794;
+
+  --color-ivory: #f8f4ee;
+  --color-bronze: #a96a42;
+  --color-emerald: #2e6b4e;
+
+  --color-dark: #801418;
+  --color-dark-soft: #5a0f11;
+  --color-dark-muted: #3e0b0d;
+
+  --color-text-main: #f8f4ee;
+  --color-text-dark: #1a1a1a;
+  --color-text-muted: #b7afa8;
+  --color-text-gold: #dcc190;
+
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "Inter", sans-serif;
+
+  --text-hero: clamp(3.2rem, 8vw, 6.5rem);
+  --text-h1: clamp(2.8rem, 6vw, 5rem);
+  --text-h2: clamp(2.2rem, 4vw, 3.5rem);
+  --text-h3: clamp(1.8rem, 3vw, 2.5rem);
+  --text-h4: 2rem;
+  --text-h5: 1.5rem;
+  --text-h6: 1.25rem;
+
+  --leading-hero: 0.95;
+  --leading-h1: 1;
+  --leading-h2: 1.08;
+  --leading-h3: 1.15;
+  --leading-body: 1.7;
+
+  --spacing-section: 7rem;
+  --spacing-section-sm: 4rem;
+  --spacing-container: 82rem;
+
+  --radius-card: 1.25rem;
+  --radius-button: 999px;
+
+  --shadow-gold: 0 0 40px rgba(220, 193, 144, 0.22);
+  --shadow-burgundy: 0 0 50px rgba(128, 20, 24, 0.35);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-dark);
+    color: var(--color-ivory);
+  }
+
+  a,
+  button {
+    font-family: var(--font-body);
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply font-body text-sm font-medium uppercase tracking-[0.16em] text-ivory/75 transition duration-300 hover:text-secondary;
+  }
+
+  .nav-link.router-link-active,
+  .nav-link.router-link-exact-active {
+    @apply text-secondary;
+  }
+}
