@@ -13,7 +13,7 @@
           <img
             src="../assets/images/logo.png"
             alt="Alphabomet Holdings logo"
-            class="h-11 w-auto object-contain"
+            class="h-15 w-auto object-contain"
           />
         </RouterLink>
 
@@ -41,7 +41,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="relative border-t border-secondary/10 px-6 py-12">
+    <footer class="relative border-t bg-[#0A0A0A] border-secondary/10 px-6 py-12">
       <div class="mx-auto flex max-w-container flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div>
           <p class="font-heading text-2xl text-ivory">Alphabomet Holdings</p>

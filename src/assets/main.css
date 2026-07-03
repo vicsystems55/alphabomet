@@ -76,4 +76,16 @@
   .nav-link.router-link-exact-active {
     @apply text-secondary;
   }
+
+   .footer-title {
+    @apply text-sm font-semibold uppercase tracking-[0.22em] text-secondary;
+  }
+
+  .footer-list {
+    @apply mt-4 space-y-3 text-sm text-ivory/70;
+  }
+
+  .footer-list a {
+    @apply transition hover:text-secondary;
+  }
 }
