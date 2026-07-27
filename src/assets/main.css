@@ -58,6 +58,27 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: var(--gold) #210506;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 0.72rem;
+  height: 0.72rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #210506;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 0.18rem solid #210506;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f2d794, #a9823a);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f2d794;
 }
 
 body {
@@ -1318,6 +1339,30 @@ button {
   transform: translateY(8px);
 }
 
+/* Homepage scroll reveals */
+[data-home-reveal] {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition:
+    opacity 720ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 760ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--reveal-order, 0) * 85ms);
+  will-change: opacity, transform;
+}
+
+[data-home-reveal="left"] {
+  transform: translate(-2rem, 1rem);
+}
+
+[data-home-reveal="card"] {
+  transform: translateY(1.6rem) scale(0.975);
+}
+
+[data-home-reveal].is-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
 .page-leave-to {
   opacity: 0;
 }
@@ -1627,5 +1672,10 @@ button {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  [data-home-reveal] {
+    opacity: 1;
+    transform: none;
   }
 }

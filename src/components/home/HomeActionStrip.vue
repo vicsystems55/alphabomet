@@ -1,6 +1,12 @@
 <template>
   <section class="home-actions">
-    <RouterLink v-for="item in items" :key="item.title" :to="item.path">
+    <RouterLink
+      v-for="(item, index) in items"
+      :key="item.title"
+      :to="item.path"
+      data-home-reveal="card"
+      :style="{ '--reveal-order': index }"
+    >
       <component :is="item.icon" :size="35" stroke-width="1.25" />
       <div>
         <h2>{{ item.title }}</h2>

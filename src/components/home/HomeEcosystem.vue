@@ -1,6 +1,6 @@
 <template>
   <section class="home-ecosystem">
-    <div class="home-ecosystem__heading">
+    <div class="home-ecosystem__heading" data-home-reveal="left">
       <div>
         <p class="home-section-kicker">Our ecosystem</p>
         <h2>A Diverse Portfolio. <span>One Unified Vision.</span></h2>
@@ -10,7 +10,7 @@
       </RouterLink>
     </div>
 
-    <div class="home-ecosystem__filters" aria-label="Filter portfolio companies">
+    <div class="home-ecosystem__filters" data-home-reveal aria-label="Filter portfolio companies">
       <button
         v-for="filter in filters"
         :key="filter"
@@ -22,7 +22,12 @@
       </button>
     </div>
 
-    <TransitionGroup name="portfolio" tag="div" class="home-ecosystem__grid">
+    <TransitionGroup
+      name="portfolio"
+      tag="div"
+      class="home-ecosystem__grid"
+      data-home-reveal="card"
+    >
       <RouterLink
         v-for="company in visibleCompanies"
         :key="company.slug"

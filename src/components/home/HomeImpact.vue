@@ -1,7 +1,7 @@
 <template>
   <section class="home-impact">
     <img :src="treeArt" class="home-impact__tree" alt="" aria-hidden="true" />
-    <div class="home-impact__intro">
+    <div class="home-impact__intro" data-home-reveal="left">
       <p class="home-impact__kicker">Our impact</p>
       <h2>Creating Value.<br /><span>Transforming Lives.</span></h2>
       <p>
@@ -14,7 +14,12 @@
     </div>
 
     <div class="home-impact__metrics">
-      <article v-for="metric in metrics" :key="metric.value">
+      <article
+        v-for="(metric, index) in metrics"
+        :key="metric.value"
+        data-home-reveal="card"
+        :style="{ '--reveal-order': index }"
+      >
         <component :is="metric.icon" :size="30" stroke-width="1.35" />
         <strong>{{ metric.value }}</strong>
         <p>{{ metric.label }}</p>
