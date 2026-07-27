@@ -54,7 +54,7 @@ import {
   Globe2,
   ShieldCheck,
 } from "@lucide/vue";
-import globeImage from "../../assets/images/globe.jpg";
+import globeImage from "../../assets/images/globe.png";
 
 const metrics = [
   {
