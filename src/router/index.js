@@ -1,14 +1,90 @@
 import { createRouter, createWebHistory } from "vue-router";
-
 import MainLayout from "../layouts/MainLayout.vue";
-
 import Home from "../pages/Home.vue";
 import About from "../pages/About.vue";
 import Businesses from "../pages/Businesses.vue";
 import Impact from "../pages/Impact.vue";
-import Partnerships from "../pages/Partnerships.vue";
+import Investors from "../pages/Investors.vue";
 import Insights from "../pages/Insights.vue";
 import Contact from "../pages/Contact.vue";
+import CompanyProfile from "../pages/CompanyProfile.vue";
+import BusinessSector from "../pages/BusinessSector.vue";
+import UnderConstruction from "../components/shared/UnderConstruction.vue";
+import { businessGroups, flatNavigation } from "../data/siteNavigation";
+
+const pageMeta = {
+  "/about": {
+    title: "About Alphabomet Holdings | Boundless Opportunities",
+    description: "Meet the vision, values, leadership and governance behind Alphabomet Holdings.",
+  },
+  "/businesses": {
+    title: "Our Businesses | Alphabomet Holdings",
+    description: "Explore Alphabomet companies across energy, agriculture, infrastructure, mining, logistics and technology.",
+  },
+  "/impact": {
+    title: "Impact & Sustainability | Alphabomet Holdings",
+    description: "Discover how Alphabomet creates economic, social and environmental impact across Africa.",
+  },
+  "/investors": {
+    title: "Investors | Alphabomet Holdings",
+    description: "Explore Alphabomet's portfolio, investment strategy and long-term growth framework.",
+  },
+  "/insights": {
+    title: "Insights | Alphabomet Holdings",
+    description: "Read news, market perspectives and corporate updates from Alphabomet Holdings.",
+  },
+  "/contact": {
+    title: "Contact | Alphabomet Holdings",
+    description: "Connect with Alphabomet for partnerships, careers, investors and general enquiries.",
+  },
+};
+
+const sectionComponents = {
+  "/about": About,
+  "/businesses": Businesses,
+  "/impact": Impact,
+  "/investors": Investors,
+  "/insights": Insights,
+  "/contact": Contact,
+};
+
+const contentRoutes = flatNavigation.map((page) => {
+  const isOverview = page.path in sectionComponents;
+  const isCompany = Boolean(page.companySlug);
+  const isContactPage = page.path === "/contact/contact-us";
+  const businessGroup = businessGroups.find(
+    (group) => group.title === page.label && page.path.startsWith("/businesses/"),
+  );
+  const isBusinessSector = Boolean(businessGroup);
+  const parentPath = page.path.split("/").slice(0, 2).join("/");
+  const meta = isOverview
+    ? pageMeta[page.path]
+    : {
+        title: `${page.label} | Alphabomet Holdings`,
+        description: `Explore ${page.label} at Alphabomet Holdings.`,
+        pageTitle: page.label,
+        section: page.section,
+        parentPath,
+        companySlug: page.companySlug,
+        businessGroup: businessGroup?.title,
+      };
+
+  return {
+    path: page.path.slice(1),
+    ...(isCompany || isBusinessSector
+      ? { alias: `/${page.path.split("/").slice(2).join("/")}` }
+      : {}),
+    name: page.path.slice(1).replaceAll("/", "-"),
+    component: isOverview || isContactPage
+      ? (sectionComponents[page.path] || Contact)
+      : isBusinessSector
+        ? BusinessSector
+      : isCompany
+        ? CompanyProfile
+        : UnderConstruction,
+    meta,
+  };
+});
 
 const routes = [
   {
@@ -17,72 +93,24 @@ const routes = [
     children: [
       {
         path: "",
-        name: "Home",
+        name: "home",
         component: Home,
         meta: {
           title: "Building Enterprises That Power Economies | Alphabomet Holdings",
-          description:
-            "Alphabomet Holdings is an Africa-focused holding company building enterprises across infrastructure, investment, technology, and trade.",
+          description: "Alphabomet is an Africa-focused group building enterprises across essential sectors.",
         },
       },
+      ...contentRoutes,
+      { path: "partnerships", redirect: "/investors/partnerships" },
       {
-        path: "about",
-        name: "About",
-        component: About,
+        path: ":pathMatch(.*)*",
+        name: "not-found",
+        component: UnderConstruction,
         meta: {
-          title: "About Alphabomet Holdings | Boundless Opportunities",
-          description:
-            "Learn about Alphabomet Holdings, its vision, mission, governance, leadership, and commitment to long-term economic value.",
-        },
-      },
-      {
-        path: "businesses",
-        name: "Businesses",
-        component: Businesses,
-        meta: {
-          title: "Our Businesses | Alphabomet Holdings",
-          description:
-            "Explore Alphabomet Holdings' core business areas across infrastructure, investment, technology, and strategic trade.",
-        },
-      },
-      {
-        path: "impact",
-        name: "Impact",
-        component: Impact,
-        meta: {
-          title: "Impact & Sustainability | Alphabomet Holdings",
-          description:
-            "Discover how Alphabomet Holdings creates economic, social, environmental, and governance impact across Africa.",
-        },
-      },
-      {
-        path: "partnerships",
-        name: "Partnerships",
-        component: Partnerships,
-        meta: {
-          title: "Partnerships | Alphabomet Holdings",
-          description:
-            "Partner with Alphabomet Holdings across government projects, PPPs, investors, DFIs, and strategic business opportunities.",
-        },
-      },
-      {
-        path: "insights",
-        name: "Insights",
-        component: Insights,
-        meta: {
-          title: "Insights | Alphabomet Holdings",
-          description:
-            "Read corporate updates, strategy insights, market perspectives, and thought leadership from Alphabomet Holdings.",
-        },
-      },
-      {
-        path: "contact",
-        name: "Contact",
-        component: Contact,
-        meta: {
-          title: "Contact Alphabomet Holdings",
-          description:
-            "Contact Alphabomet Holdings for business enquiries, partnerships, investor relations, media, and corporate information.",
+          title: "Page Not Found | Alphabomet Holdings",
+          pageTitle: "Page not found",
+          section: "Alphabomet",
+          parentPath: "/",
         },
       },
     ],
@@ -93,8 +121,14 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior() {
-    return { top: 0, behavior: "smooth" };
+    return { top: 0 };
   },
+});
+
+router.afterEach((to) => {
+  document.title = to.meta.title || "Alphabomet Holdings";
+  const description = document.querySelector('meta[name="description"]');
+  if (description) description.setAttribute("content", to.meta.description || "");
 });
 
 export default router;
