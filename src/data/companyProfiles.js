@@ -23,6 +23,8 @@ export const companyProfiles = [
     logo: saudhiLogo,
     overview:
       "An integrated oil and gas company providing upstream, midstream and downstream energy solutions.",
+    strategicRole: "Energy security",
+    focus: "Africa",
     capabilities: ["Upstream development", "Midstream infrastructure", "Downstream solutions"],
   },
   {
@@ -34,6 +36,8 @@ export const companyProfiles = [
     logo: reidmontLogo,
     overview:
       "Developing utility-scale solar, hydro, biomass, battery storage and clean energy infrastructure.",
+    strategicRole: "Clean energy transition",
+    focus: "Africa",
     capabilities: ["Renewable generation", "Battery storage", "Clean energy infrastructure"],
   },
   {
@@ -45,6 +49,8 @@ export const companyProfiles = [
     logo: agronomyLogo,
     overview:
       "Commercial agriculture and agribusiness solutions spanning irrigation, livestock, food processing and food security.",
+    strategicRole: "Food security",
+    focus: "Africa",
     capabilities: ["Commercial agriculture", "Irrigation and livestock", "Food processing"],
   },
   {
@@ -56,6 +62,8 @@ export const companyProfiles = [
     logo: bonstructionLogo,
     overview:
       "Engineering, civil construction, infrastructure development and project execution for complex built-environment needs.",
+    strategicRole: "Infrastructure development",
+    focus: "Africa",
     capabilities: ["Civil engineering", "Infrastructure delivery", "Project execution"],
   },
   {
@@ -67,6 +75,8 @@ export const companyProfiles = [
     logo: azzetzLogo,
     overview:
       "Residential, commercial and mixed-use property development designed for the needs of growing African markets.",
+    strategicRole: "Urban development",
+    focus: "Africa",
     capabilities: ["Residential development", "Commercial property", "Mixed-use assets"],
   },
   {
@@ -78,6 +88,8 @@ export const companyProfiles = [
     logo: underearthLogo,
     overview:
       "Mineral exploration, mining, beneficiation, trading and responsible natural-resource development.",
+    strategicRole: "Resource development",
+    focus: "Africa",
     capabilities: ["Mineral exploration", "Mining and beneficiation", "Resource trading"],
   },
   {
@@ -90,6 +102,8 @@ export const companyProfiles = [
     logo: pegLogo,
     overview:
       "Maritime logistics, freight forwarding, customs brokerage, warehousing and integrated supply-chain management.",
+    strategicRole: "Global trade enablement",
+    focus: "Global",
     capabilities: ["Maritime logistics", "Freight and customs", "Warehousing and supply chains"],
   },
   {
@@ -101,6 +115,8 @@ export const companyProfiles = [
     logo: licensaLogo,
     overview:
       "An intelligent licensing platform connecting governments, businesses and citizens through efficient digital services.",
+    strategicRole: "Digital governance",
+    focus: "Africa",
     capabilities: ["Digital licensing", "Government workflows", "Citizen services"],
   },
   {
@@ -112,17 +128,21 @@ export const companyProfiles = [
     logo: openTaxLogo,
     overview:
       "Digital tax compliance, consultancy, tax management and revenue solutions for modern economies.",
+    strategicRole: "Revenue modernization",
+    focus: "Africa",
     capabilities: ["Tax compliance", "Revenue technology", "Tax advisory"],
   },
   {
     slug: "paymanent",
     name: "Paymanent",
     navigationName: "Paymanent",
-    group: "Technology",
+    group: "Financial Services",
     sector: "Financial Technology",
     logo: paymanentLogo,
     overview:
       "Digital payments, remittance, blockchain settlement, wallets and embedded-finance infrastructure.",
+    strategicRole: "Financial inclusion",
+    focus: "Africa",
     capabilities: ["Digital payments", "Remittance and wallets", "Embedded finance"],
   },
   {
@@ -134,6 +154,8 @@ export const companyProfiles = [
     logo: null,
     overview:
       "AI, enterprise software, cybersecurity, cloud infrastructure, managed IT services and data-center management.",
+    strategicRole: "Digital transformation",
+    focus: "Global",
     capabilities: ["Artificial intelligence", "Cloud and cybersecurity", "Data-center management"],
   },
   {
@@ -184,12 +206,14 @@ export const companyProfiles = [
     slug: "airlandeep-international",
     name: "Airlandeep International",
     navigationName: "Airlandeep International",
-    group: "Defense & Security",
-    sector: "Defense & Security",
+    group: "Defence",
+    sector: "Defence Technology",
     logo: null,
     overview:
       "Defense technologies, surveillance systems, security equipment, integrated services and mission support.",
-    capabilities: ["Defense technology", "Surveillance systems", "Mission support"],
+    strategicRole: "National security",
+    focus: "Global",
+    capabilities: ["Defence technology", "Surveillance systems", "Mission support"],
   },
 ];
 

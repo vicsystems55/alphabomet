@@ -101,6 +101,22 @@ const routes = [
         },
       },
       ...contentRoutes,
+      {
+        path: "businesses/technology/paymanent",
+        redirect: "/businesses/financial-services/paymanent",
+      },
+      {
+        path: "technology/paymanent",
+        redirect: "/financial-services/paymanent",
+      },
+      {
+        path: "businesses/defense-and-security/airlandeep-international",
+        redirect: "/businesses/defence/airlandeep-international",
+      },
+      {
+        path: "defense-and-security/airlandeep-international",
+        redirect: "/defence/airlandeep-international",
+      },
       { path: "partnerships", redirect: "/investors/partnerships" },
       {
         path: ":pathMatch(.*)*",

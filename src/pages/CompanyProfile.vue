@@ -1,7 +1,14 @@
 <template>
   <div v-if="company" class="company-profile">
     <section class="company-profile__hero">
+      <div
+        class="company-profile__hero-background"
+        :style="{ backgroundImage: `url(${heroImage})` }"
+        aria-hidden="true"
+      ></div>
+      <div class="company-profile__hero-overlay" aria-hidden="true"></div>
       <div class="company-profile__pattern" aria-hidden="true"></div>
+      <img :src="treeArt" class="company-profile__tree" alt="" aria-hidden="true" />
       <div class="company-profile__hero-inner">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           <RouterLink to="/">Home</RouterLink>
@@ -26,6 +33,20 @@
         </div>
 
         <p class="company-profile__lead">{{ company.overview }}</p>
+        <div class="company-profile__facts">
+          <div v-if="company.strategicRole">
+            <span>Strategic role</span>
+            <strong>{{ company.strategicRole }}</strong>
+          </div>
+          <div v-if="company.focus">
+            <span>Market focus</span>
+            <strong>{{ company.focus }}</strong>
+          </div>
+          <div>
+            <span>Business unit</span>
+            <strong>{{ company.group }}</strong>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -81,6 +102,9 @@ import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { ArrowRight, ChevronRight } from "@lucide/vue";
 import { companyBySlug } from "../data/companyProfiles";
+import buildingImage from "../assets/images/building.jpg";
+import officeImage from "../assets/images/office.jpg";
+import treeArt from "../assets/images/white-tree.png";
 
 const route = useRoute();
 const company = computed(() => companyBySlug[route.meta.companySlug]);
@@ -97,5 +121,9 @@ const groupSlug = computed(() =>
     .replace(/&/g, "and")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, ""),
+);
+const officeLedGroups = ["Technology", "Financial Services", "Investment"];
+const heroImage = computed(() =>
+  officeLedGroups.includes(company.value?.group) ? officeImage : buildingImage,
 );
 </script>

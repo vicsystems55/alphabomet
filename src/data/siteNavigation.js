@@ -30,7 +30,11 @@ export const businessGroups = [
     description: "Mobilizing capital and developing ventures for lasting value.",
   },
   {
-    title: "Defense & Security",
+    title: "Financial Services",
+    description: "Expanding access to modern payments and inclusive financial infrastructure.",
+  },
+  {
+    title: "Defence",
     description: "Supporting safety, resilience and mission-critical capability.",
   },
 ].map((group) => ({

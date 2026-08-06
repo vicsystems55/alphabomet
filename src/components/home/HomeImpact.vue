@@ -34,7 +34,7 @@ import treeArt from "../../assets/images/white-tree.png";
 
 const metrics = [
   { icon: Building2, value: "16", label: "Portfolio companies" },
-  { icon: Layers3, value: "8", label: "Strategic operating groups" },
+  { icon: Layers3, value: "9", label: "Strategic operating groups" },
   { icon: Map, value: "Africa", label: "Continental ambition" },
   { icon: Leaf, value: "ESG", label: "Responsible growth leadership" },
 ];

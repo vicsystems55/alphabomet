@@ -96,7 +96,8 @@ const imageByGroup = {
   Logistics: logisticsImage,
   Technology: corporateImage,
   Investment: corporateImage,
-  "Defense & Security": corporateImage,
+  "Financial Services": corporateImage,
+  Defence: corporateImage,
 };
 
 const titleByGroup = {
@@ -107,7 +108,8 @@ const titleByGroup = {
   Logistics: "Connecting markets and opportunity.",
   Technology: "Engineering a digital-first Africa.",
   Investment: "Capital for enduring enterprise.",
-  "Defense & Security": "Capability for a safer future.",
+  "Financial Services": "Finance that broadens opportunity.",
+  Defence: "Capability for a safer future.",
 };
 
 const sectorImage = computed(() => imageByGroup[group.value?.title] || aboutImage);

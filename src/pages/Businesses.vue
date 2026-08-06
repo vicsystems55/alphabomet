@@ -100,13 +100,14 @@ import {
   Leaf,
   ShieldCheck,
   Truck,
+  WalletCards,
   Zap,
 } from "@lucide/vue";
 import PageHero from "../components/shared/PageHero.vue";
 import { businessGroups } from "../data/siteNavigation";
 import { companyProfiles } from "../data/companyProfiles";
 
-const icons = [Zap, Leaf, Factory, Gem, Truck, Cpu, Landmark, ShieldCheck];
+const icons = [Zap, Leaf, Factory, Gem, Truck, Cpu, Landmark, WalletCards, ShieldCheck];
 const slugify = (value) =>
   value
     .toLowerCase()
