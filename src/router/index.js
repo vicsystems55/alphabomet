@@ -9,6 +9,8 @@ import Insights from "../pages/Insights.vue";
 import Contact from "../pages/Contact.vue";
 import CompanyProfile from "../pages/CompanyProfile.vue";
 import BusinessSector from "../pages/BusinessSector.vue";
+import AboutDetail from "../pages/AboutDetail.vue";
+import ChairmansMessage from "../pages/ChairmansMessage.vue";
 import UnderConstruction from "../components/shared/UnderConstruction.vue";
 import { businessGroups, flatNavigation } from "../data/siteNavigation";
 
@@ -48,10 +50,20 @@ const sectionComponents = {
   "/contact": Contact,
 };
 
+const developedAboutPages = new Set([
+  "/about/who-we-are",
+  "/about/our-vision-and-mission",
+  "/about/our-values",
+  "/about/our-strategy",
+  "/about/governance-and-esg",
+]);
+
 const contentRoutes = flatNavigation.map((page) => {
   const isOverview = page.path in sectionComponents;
   const isCompany = Boolean(page.companySlug);
   const isContactPage = page.path === "/contact/contact-us";
+  const isChairmansMessage = page.path === "/about/chairmans-message";
+  const isAboutDetail = developedAboutPages.has(page.path);
   const businessGroup = businessGroups.find(
     (group) => group.title === page.label && page.path.startsWith("/businesses/"),
   );
@@ -67,6 +79,7 @@ const contentRoutes = flatNavigation.map((page) => {
         parentPath,
         companySlug: page.companySlug,
         businessGroup: businessGroup?.title,
+        aboutPage: isAboutDetail ? page.path.split("/").at(-1) : undefined,
       };
 
   return {
@@ -77,6 +90,10 @@ const contentRoutes = flatNavigation.map((page) => {
     name: page.path.slice(1).replaceAll("/", "-"),
     component: isOverview || isContactPage
       ? (sectionComponents[page.path] || Contact)
+      : isChairmansMessage
+        ? ChairmansMessage
+      : isAboutDetail
+        ? AboutDetail
       : isBusinessSector
         ? BusinessSector
       : isCompany

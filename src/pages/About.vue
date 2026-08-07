@@ -3,7 +3,7 @@
     <PageHero
       eyebrow="About Alphabomet"
       title="Built for Africa. Designed for lasting value."
-      summary="A diversified African holding company building, acquiring, operating and scaling high-impact businesses."
+      summary="A diversified investment holding company developing, investing in and managing businesses across the strategic sectors driving Africa's growth."
       index="01"
       :image="aboutImage"
     />
@@ -15,13 +15,15 @@
       </div>
       <div>
         <p>
-          Alphabomet Holdings is the strategic parent of a growing portfolio across
-          energy, agriculture, infrastructure, mining, logistics, real estate,
-          financial technology, artificial intelligence and enterprise innovation.
+          Alphabomet Holdings provides strategic leadership, governance, investment
+          oversight, operational support and shared corporate services across a
+          growing portfolio of subsidiaries.
         </p>
         <p>
-          Our companies operate independently while benefiting from shared direction,
-          governance, investment capacity and cross-sector collaboration.
+          Through disciplined capital allocation and long-term planning, we build
+          resilient businesses capable of competing in regional and international
+          markets. Each subsidiary operates independently while benefiting from the
+          Group's collaborative ecosystem.
         </p>
       </div>
     </section>
@@ -31,21 +33,35 @@
       <article>
         <span>01</span>
         <p class="eyebrow">Our vision</p>
-        <h2>To become Africa's most respected and globally recognized holding company.</h2>
+        <h2>To become Africa's leading diversified investment holding company.</h2>
         <p>
-          Building world-class enterprises that transform industries, empower
-          communities and create sustainable economic prosperity.
+          Recognized globally for innovation, sustainable growth, operational
+          excellence and transformational impact across strategic industries.
         </p>
       </article>
       <article>
         <span>02</span>
         <p class="eyebrow">Our mission</p>
-        <h2>Develop, invest in and manage exceptional businesses.</h2>
+        <h2>Build, invest in and grow world-class businesses.</h2>
         <p>
-          Delivering innovative solutions, operational excellence, long-term value
-          creation and sustainable growth across diverse industries.
+          Creating sustainable shareholder value, empowering communities,
+          strengthening economies and addressing Africa's most pressing challenges.
         </p>
       </article>
+    </section>
+
+    <section class="about-page__philosophy">
+      <img :src="treeArt" alt="" aria-hidden="true" />
+      <div>
+        <p class="eyebrow">Corporate philosophy</p>
+        <h2>Prosperity through responsible investment and ethical leadership.</h2>
+      </div>
+      <p>
+        We develop businesses that generate financial returns while contributing
+        positively to society, protecting the environment and inspiring future
+        generations. Innovation, disciplined execution and sustainability guide the
+        way we create value.
+      </p>
     </section>
 
     <section class="about-page__values">
@@ -104,39 +120,9 @@
 <script setup>
 import { ArrowRight } from "@lucide/vue";
 import PageHero from "../components/shared/PageHero.vue";
+import { aboutValues as values, groupStrategy as strategy } from "../data/aboutContent";
 import aboutImage from "../assets/slide-1.png";
 import treeArt from "../assets/images/white-tree.png";
-
-const values = [
-  "Integrity",
-  "Excellence",
-  "Innovation",
-  "Accountability",
-  "Sustainability",
-  "Collaboration",
-  "Customer Focus",
-  "Leadership",
-  "Safety",
-  "Respect",
-];
-
-const strategy = [
-  {
-    title: "Consolidate",
-    description:
-      "Strengthen governance, improve operational excellence and build a resilient corporate foundation.",
-  },
-  {
-    title: "Expand",
-    description:
-      "Scale high-performing subsidiaries, enter new markets and establish strategic partnerships.",
-  },
-  {
-    title: "Mature",
-    description:
-      "Develop globally competitive enterprises delivering sustainable returns and long-term stakeholder value.",
-  },
-];
 
 const pillars = [
   "Diversified Investments",
@@ -252,6 +238,31 @@ const pillars = [
   background: #efe7dc;
 }
 
+.about-page__philosophy {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2));
+  overflow: hidden;
+  background: var(--wine-deep);
+  color: var(--cream);
+}
+
+.about-page__philosophy > img {
+  position: absolute;
+  right: -6rem;
+  bottom: -9rem;
+  width: min(34rem, 48vw);
+  opacity: .05;
+}
+
+.about-page__philosophy > div,
+.about-page__philosophy > p { position: relative; z-index: 1; }
+.about-page__philosophy .eyebrow { color: var(--gold); }
+.about-page__philosophy h2 { color: var(--cream); }
+.about-page__philosophy > p { align-self: end; margin: 0; color: rgba(248,244,238,.68); line-height: 1.85; }
+
 .about-page__value-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -345,6 +356,7 @@ const pillars = [
   .about-page__purpose {
     grid-template-columns: 1fr;
   }
+  .about-page__philosophy { grid-template-columns: 1fr; padding: 5rem 1.25rem; }
   .about-page__intro,
   .about-page__pillars { width: calc(100% - 2.5rem); padding: 5rem 0; }
   .about-page__purpose article { min-height: 26rem; padding: 4rem 1.25rem; border-right: 0; border-bottom: 1px solid rgba(220, 193, 144, 0.16); }
