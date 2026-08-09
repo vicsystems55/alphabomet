@@ -155,3 +155,58 @@ export const chairmansForeword = [
   "This Corporate Group Profile reflects our ambitions, capabilities and commitment to building sustainable enterprises that will serve generations to come.",
   "Together, we are building businesses that create lasting value.",
 ];
+
+export const chairmanProfile = {
+  name: "Wahab Suyiti, MBA",
+  title: "Founder & Group Chief Executive Officer",
+  descriptors: [
+    "Serial Entrepreneur",
+    "Global Business Leader",
+    "Technology Enthusiast",
+    "Results-Oriented Executive",
+    "Philanthropist",
+  ],
+  biography: [
+    "Wahab Suyiti is a Nigerian economist, serial entrepreneur, philanthropist, business strategist, technology enthusiast and globally oriented corporate leader. As Founder and Group Chief Executive Officer of Alphabomet Holdings, he provides strategic leadership and oversees the Group's vision for sustainable growth, innovation, investment expansion and global competitiveness across key economic sectors. He is also the Founder of The Alphabomet Foundation.",
+    "His multidisciplinary background spans economics, finance and investment, project management, human resources, health, safety and environment, client service and relationship management, and technology. This breadth of experience informs a comprehensive and strategic approach to entrepreneurship and enterprise development.",
+    "His leadership philosophy is anchored in vision, innovation, strategic execution, integrity, talent development and measurable impact. He is committed to building enterprises that generate financial value while advancing job creation, innovation, economic development and sustainable societal progress.",
+    "Through Alphabomet Holdings, he is advancing a long-term vision to establish a diversified, professionally structured, technology-driven and globally competitive African corporate group.",
+  ],
+  education: [
+    {
+      label: "Foundation",
+      value: "St. Gregory's College, Ikoyi, Lagos",
+    },
+    {
+      label: "Higher education",
+      value: "B.Sc. Economics, University of Abuja, FCT",
+    },
+    {
+      label: "Postgraduate",
+      value: "MBA Finance & Investment, Ahmadu Bello University, Zaria",
+    },
+    {
+      label: "Professional development",
+      value: "PMP, Human Resource Management and Client Service & Relationship Management",
+    },
+    {
+      label: "Safety leadership",
+      value: "HSE & GHSE, Institute of Safety Professionals of Nigeria",
+    },
+  ],
+  affiliations: [
+    "Nigerian Economic Society (NES)",
+    "Young African Leaders Initiative (YALI)",
+    "Organization for Research of World Peace - United Nations alumnus",
+    "Honorary member (JISC), Defense Intelligence Agency",
+  ],
+  interests: [
+    "Technology",
+    "Digital Transformation",
+    "Artificial Intelligence",
+    "Fintech",
+    "Investment",
+    "Emerging Business Models",
+  ],
+  motto: "Think Global. Build Strategically. Execute with Purpose. Create Impact.",
+};
