@@ -151,7 +151,7 @@ const pillars = [
 
 .about-page h2 {
   margin: 0;
-  color: var(--wine);
+  color: var(--heading-color);
   font-family: var(--font-heading);
   font-size: clamp(2.7rem, 5vw, 4.7rem);
   font-weight: 600;
@@ -165,7 +165,7 @@ const pillars = [
 
 .about-page__intro > div:last-child p {
   margin: 0;
-  color: #655a58;
+  color: var(--text-secondary);
   line-height: 1.85;
 }
 
@@ -235,7 +235,7 @@ const pillars = [
 
 .about-page__values {
   padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2));
-  background: #efe7dc;
+  background: var(--surface-secondary);
 }
 
 .about-page__philosophy {
@@ -266,15 +266,15 @@ const pillars = [
 .about-page__value-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--border-subtle);
+  border-left: 1px solid var(--border-subtle);
 }
 
 .about-page__value-grid article {
   min-height: 10rem;
   padding: 1.4rem;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .about-page__value-grid span {
@@ -285,14 +285,14 @@ const pillars = [
 
 .about-page__value-grid h3 {
   margin: 3.2rem 0 0;
-  color: var(--wine);
+  color: var(--heading-color);
   font-family: var(--font-heading);
   font-size: 1.35rem;
 }
 
 .about-page__strategy {
   padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2));
-  background: #fff;
+  background: var(--surface-primary);
 }
 
 .about-page__strategy-heading {
@@ -307,12 +307,12 @@ const pillars = [
 .about-page__strategy-grid article {
   min-height: 19rem;
   padding: 2rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border-subtle);
   border-right: 0;
 }
 
 .about-page__strategy-grid article:last-child {
-  border-right: 1px solid var(--line);
+  border-right: 1px solid var(--border-subtle);
 }
 
 .about-page__strategy-grid span {
@@ -323,13 +323,13 @@ const pillars = [
 
 .about-page__strategy-grid h3 {
   margin: 4rem 0 0;
-  color: var(--wine);
+  color: var(--heading-color);
   font-family: var(--font-heading);
   font-size: 2.2rem;
 }
 
 .about-page__strategy-grid p {
-  color: #6a5e5c;
+  color: var(--text-secondary);
   font-size: 0.8rem;
   line-height: 1.7;
 }
@@ -343,8 +343,8 @@ const pillars = [
 
 .about-page__pillars > div:last-child span {
   padding: 0.75rem 1rem;
-  border: 1px solid var(--line);
-  color: var(--wine);
+  border: 1px solid var(--border-subtle);
+  color: var(--heading-color);
   font-size: 0.66rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -362,7 +362,7 @@ const pillars = [
   .about-page__purpose article { min-height: 26rem; padding: 4rem 1.25rem; border-right: 0; border-bottom: 1px solid rgba(220, 193, 144, 0.16); }
   .about-page__value-grid { grid-template-columns: repeat(2, 1fr); }
   .about-page__strategy-grid { grid-template-columns: 1fr; }
-  .about-page__strategy-grid article { min-height: 15rem; border-right: 1px solid var(--line); border-bottom: 0; }
-  .about-page__strategy-grid article:last-child { border-bottom: 1px solid var(--line); }
+  .about-page__strategy-grid article { min-height: 15rem; border-right: 1px solid var(--border-subtle); border-bottom: 0; }
+  .about-page__strategy-grid article:last-child { border-bottom: 1px solid var(--border-subtle); }
 }
 </style>

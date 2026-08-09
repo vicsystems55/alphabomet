@@ -195,7 +195,7 @@ const initials = (name) =>
 
 .sector-page h2 {
   margin: 0;
-  color: var(--wine);
+  color: var(--heading-color);
   font-family: var(--font-heading);
   font-size: clamp(2.7rem, 5vw, 4.7rem);
   font-weight: 600;
@@ -206,7 +206,7 @@ const initials = (name) =>
 .sector-page__intro > p {
   align-self: end;
   margin: 0;
-  color: #655a58;
+  color: var(--text-secondary);
   line-height: 1.85;
 }
 
@@ -214,7 +214,7 @@ const initials = (name) =>
   position: relative;
   padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2));
   overflow: hidden;
-  background: #efe7dc;
+  background: var(--surface-secondary);
 }
 
 .sector-page__companies > img {
@@ -229,16 +229,16 @@ const initials = (name) =>
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--border-subtle);
+  border-left: 1px solid var(--border-subtle);
 }
 
 .sector-page__company-grid > a {
   position: relative;
   min-height: 20rem;
   padding: 1.7rem;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
   background: rgba(255, 255, 255, 0.35);
   transition: 220ms ease;
 }
@@ -248,7 +248,7 @@ const initials = (name) =>
   height: 8rem;
   place-items: center;
   padding: 1rem;
-  background: #fff;
+  background: var(--logo-surface);
 }
 
 .sector-page__company-grid img {
@@ -258,7 +258,7 @@ const initials = (name) =>
 }
 
 .sector-page__company-grid > a > div span {
-  color: var(--wine);
+  color: var(--heading-color);
   font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 700;
@@ -275,7 +275,7 @@ const initials = (name) =>
 
 .sector-page__company-grid h3 {
   margin: 0.55rem 0 0;
-  color: var(--wine);
+  color: var(--heading-color);
   font-family: var(--font-heading);
   font-size: 1.7rem;
 }
@@ -284,12 +284,12 @@ const initials = (name) =>
   position: absolute;
   right: 1.5rem;
   bottom: 1.5rem;
-  color: var(--wine);
+  color: var(--heading-color);
 }
 
 .sector-page__company-grid > a:hover {
   z-index: 1;
-  background: #fff;
+  background: var(--surface-primary);
   box-shadow: 0 1.5rem 3rem rgba(74, 7, 11, 0.14);
   transform: translateY(-0.3rem);
 }

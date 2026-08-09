@@ -130,7 +130,7 @@ const locations = [
 
 .contact-page h2 {
   margin: 0;
-  color: var(--wine);
+  color: var(--heading-color);
   font-family: var(--font-heading);
   font-size: clamp(2.7rem, 5vw, 4.7rem);
   font-weight: 600;
@@ -141,7 +141,7 @@ const locations = [
 .contact-page__intro > p {
   align-self: end;
   margin: 0;
-  color: #655a58;
+  color: var(--text-secondary);
   line-height: 1.85;
 }
 
@@ -158,17 +158,17 @@ const locations = [
   gap: 1.6rem;
   min-height: 19rem;
   padding: 2rem;
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--border-subtle);
+  border-left: 1px solid var(--border-subtle);
   transition: 220ms ease;
 }
 
 .contact-page__channels > a:nth-child(even) {
-  border-right: 1px solid var(--line);
+  border-right: 1px solid var(--border-subtle);
 }
 
 .contact-page__channels > a:nth-child(n+3) {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .contact-page__channels > a > span {
@@ -182,7 +182,7 @@ const locations = [
 
 .contact-page__channels > a > svg:first-of-type {
   margin-top: auto;
-  color: var(--wine);
+  color: var(--heading-color);
 }
 
 .contact-page__channels > a > div {
@@ -196,7 +196,7 @@ const locations = [
 .contact-page__channels p {
   max-width: 25rem;
   margin: 0.8rem 0 0;
-  color: #6b605d;
+  color: var(--text-secondary);
   font-size: 0.78rem;
   line-height: 1.7;
 }
@@ -205,7 +205,7 @@ const locations = [
   position: absolute;
   right: 1.5rem;
   bottom: 1.5rem;
-  color: var(--wine);
+  color: var(--heading-color);
 }
 
 .contact-page__channels > a:hover {
@@ -294,7 +294,7 @@ const locations = [
 .contact-page__note > p {
   align-self: end;
   margin: 0;
-  color: #655a58;
+  color: var(--text-secondary);
   line-height: 1.8;
 }
 
@@ -305,8 +305,8 @@ const locations = [
   .contact-page__intro,
   .contact-page__note { width: calc(100% - 2.5rem); padding: 5rem 0; }
   .contact-page__channels { grid-template-columns: 1fr; padding-bottom: 5rem; }
-  .contact-page__channels > a { min-height: 15rem; border-right: 1px solid var(--line); border-bottom: 0; }
-  .contact-page__channels > a:last-child { border-bottom: 1px solid var(--line); }
+  .contact-page__channels > a { min-height: 15rem; border-right: 1px solid var(--border-subtle); border-bottom: 0; }
+  .contact-page__channels > a:last-child { border-bottom: 1px solid var(--border-subtle); }
   .contact-page__presence { padding: 5rem 1.25rem; }
   .contact-page__presence-grid { grid-template-columns: 1fr; }
 }

@@ -103,7 +103,7 @@ const page = computed(() => aboutPages[route.meta.aboutPage]);
 <style scoped>
 .about-detail h2 {
   margin: 0;
-  color: var(--wine);
+  color: var(--heading-color);
   font-family: var(--font-heading);
   font-size: clamp(2.6rem, 5vw, 4.7rem);
   font-weight: 600;
@@ -134,35 +134,35 @@ const page = computed(() => aboutPages[route.meta.aboutPage]);
 .about-detail__strategy,
 .about-detail__values {
   padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2));
-  background: #efe7dc;
+  background: var(--surface-secondary);
 }
 
 .about-detail__strategy-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--border-subtle);
+  border-left: 1px solid var(--border-subtle);
 }
 
 .about-detail__strategy-grid article,
 .about-detail__item-grid article {
   min-height: 15rem;
   padding: 1.7rem;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .about-detail__strategy-grid span,
 .about-detail__item-grid span { color: rgba(128,20,24,.48); font-size: .6rem; font-weight: 700; }
 .about-detail__strategy-grid h3,
-.about-detail__item-grid h3 { margin: 4rem 0 0; color: var(--wine); font-family: var(--font-heading); font-size: 1.75rem; line-height: 1.1; }
-.about-detail__strategy-grid p { color: #685c59; font-size: .78rem; line-height: 1.7; }
+.about-detail__item-grid h3 { margin: 4rem 0 0; color: var(--heading-color); font-family: var(--font-heading); font-size: 1.75rem; line-height: 1.1; }
+.about-detail__strategy-grid p { color: var(--text-secondary); font-size: .78rem; line-height: 1.7; }
 
 .about-detail__item-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--border-subtle);
+  border-left: 1px solid var(--border-subtle);
 }
 
 .about-detail__item-grid article { min-height: 10.5rem; }
@@ -175,7 +175,7 @@ const page = computed(() => aboutPages[route.meta.aboutPage]);
   gap: clamp(3rem, 8vw, 8rem);
   padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2));
   overflow: hidden;
-  background: #fff;
+  background: var(--surface-primary);
 }
 
 .about-detail__section--dark { background: var(--wine-deep); color: var(--cream); }
@@ -189,22 +189,22 @@ const page = computed(() => aboutPages[route.meta.aboutPage]);
 .about-detail__item-grid--section { position: relative; z-index: 1; }
 
 .about-detail__prose { align-self: end; }
-.about-detail__prose p { margin: 0; color: #655a58; line-height: 1.85; }
+.about-detail__prose p { margin: 0; color: var(--text-secondary); line-height: 1.85; }
 .about-detail__prose p + p { margin-top: 1.2rem; }
 .about-detail__section--dark .about-detail__prose p { color: rgba(248,244,238,.68); }
 
 .about-detail__facts {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--border-subtle);
+  border-left: 1px solid var(--border-subtle);
 }
 
-.about-detail__facts article { min-height: 8rem; padding: 1.3rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.about-detail__facts article { min-height: 8rem; padding: 1.3rem; border-right: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
 .about-detail__facts span,
 .about-detail__facts strong { display: block; }
 .about-detail__facts span { color: rgba(128,20,24,.58); font-size: .56rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.about-detail__facts strong { margin-top: 1rem; color: var(--wine); font-family: var(--font-heading); font-size: 1.2rem; }
+.about-detail__facts strong { margin-top: 1rem; color: var(--heading-color); font-family: var(--font-heading); font-size: 1.2rem; }
 
 .about-detail__item-grid--section { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); }
 .about-detail__section--dark .about-detail__item-grid { border-color: rgba(220,193,144,.18); }

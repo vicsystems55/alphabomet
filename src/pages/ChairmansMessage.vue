@@ -89,7 +89,7 @@ const commitments = [
   gap: clamp(3rem, 8vw, 8rem);
   padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2));
   overflow: hidden;
-  background: #fff;
+  background: var(--surface-primary);
 }
 
 .chairman-page__letter > img {
@@ -103,7 +103,7 @@ const commitments = [
 .chairman-page__letter aside,
 .chairman-page__letter article { position: relative; z-index: 1; }
 
-.chairman-page__letter aside { align-self: start; padding: 2.2rem; border-top: 3px solid var(--wine); background: #efe7dc; }
+.chairman-page__letter aside { align-self: start; padding: 2.2rem; border-top: 3px solid var(--heading-color); background: var(--surface-secondary); }
 .chairman-page__portrait {
   position: relative;
   height: clamp(19rem, 33vw, 28rem);
@@ -137,23 +137,23 @@ const commitments = [
   border-right: 1px solid var(--gold);
   border-bottom: 1px solid var(--gold);
 }
-.chairman-page__letter blockquote { margin: 0; color: var(--wine); font-family: var(--font-heading); font-size: clamp(1.65rem, 2.7vw, 2.4rem); line-height: 1.18; }
-.chairman-page__letter aside > div { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+.chairman-page__letter blockquote { margin: 0; color: var(--heading-color); font-family: var(--font-heading); font-size: clamp(1.65rem, 2.7vw, 2.4rem); line-height: 1.18; }
+.chairman-page__letter aside > div { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border-subtle); }
 .chairman-page__letter aside strong,
 .chairman-page__letter aside span { display: block; }
-.chairman-page__letter aside strong { color: var(--wine); font-family: var(--font-heading); font-size: 1.25rem; }
-.chairman-page__letter aside span { margin-top: .25rem; color: #786b67; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
+.chairman-page__letter aside strong { color: var(--heading-color); font-family: var(--font-heading); font-size: 1.25rem; }
+.chairman-page__letter aside span { margin-top: .25rem; color: var(--text-tertiary); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
 
-.chairman-page__letter article p { margin: 0; color: #564b49; font-size: 1rem; line-height: 1.95; }
+.chairman-page__letter article p { margin: 0; color: var(--text-secondary); font-size: 1rem; line-height: 1.95; }
 .chairman-page__letter article p + p { margin-top: 1.4rem; }
-.chairman-page__letter article p:first-child::first-letter { float: left; margin: .05rem .55rem 0 0; color: var(--wine); font-family: var(--font-heading); font-size: 4.2rem; line-height: .8; }
+.chairman-page__letter article p:first-child::first-letter { float: left; margin: .05rem .55rem 0 0; color: var(--heading-color); font-family: var(--font-heading); font-size: 4.2rem; line-height: .8; }
 
-.chairman-page__commitments { padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2)); background: #efe7dc; }
-.chairman-page__commitments h2 { margin: 0; color: var(--wine); font-family: var(--font-heading); font-size: clamp(2.7rem,5vw,4.7rem); font-weight: 600; line-height: 1; }
-.chairman-page__commitments > div:last-child { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.chairman-page__commitments article { min-height: 13rem; padding: 1.5rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.chairman-page__commitments { padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2)); background: var(--surface-secondary); }
+.chairman-page__commitments h2 { margin: 0; color: var(--heading-color); font-family: var(--font-heading); font-size: clamp(2.7rem,5vw,4.7rem); font-weight: 600; line-height: 1; }
+.chairman-page__commitments > div:last-child { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--border-subtle); border-left: 1px solid var(--border-subtle); }
+.chairman-page__commitments article { min-height: 13rem; padding: 1.5rem; border-right: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
 .chairman-page__commitments article span { color: rgba(128,20,24,.48); font-size: .6rem; font-weight: 700; }
-.chairman-page__commitments article h3 { margin: 4rem 0 0; color: var(--wine); font-family: var(--font-heading); font-size: 1.45rem; line-height: 1.1; }
+.chairman-page__commitments article h3 { margin: 4rem 0 0; color: var(--heading-color); font-family: var(--font-heading); font-size: 1.45rem; line-height: 1.1; }
 
 @media (max-width: 760px) {
   .chairman-page__letter { grid-template-columns: 1fr; padding: 5rem 1.25rem; }

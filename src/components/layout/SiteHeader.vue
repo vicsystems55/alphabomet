@@ -62,9 +62,12 @@
         </div>
       </nav>
 
-      <RouterLink to="/contact/partner-with-us" class="header-cta">
-        Partner with us <ArrowUpRight :size="16" />
-      </RouterLink>
+      <div class="header-actions">
+        <ThemeToggle />
+        <RouterLink to="/contact/partner-with-us" class="header-cta">
+          Partner with us <ArrowUpRight :size="16" />
+        </RouterLink>
+      </div>
 
       <button
         class="menu-toggle"
@@ -118,6 +121,7 @@ import { useRoute } from "vue-router";
 import { ArrowRight, ArrowUpRight, ChevronDown, Menu, X } from "@lucide/vue";
 import logo from "../../assets/images/logo.png";
 import { navigation } from "../../data/siteNavigation";
+import ThemeToggle from "./ThemeToggle.vue";
 
 const route = useRoute();
 const isScrolled = ref(false);
