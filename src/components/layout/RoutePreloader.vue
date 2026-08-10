@@ -12,7 +12,7 @@
         <img :src="logo" alt="" />
       </div>
       <div class="route-loader__line"><span></span></div>
-      <p>Boundless opportunities</p>
+      <p>Boundless opportunities.</p>
     </div>
   </Transition>
 </template>
