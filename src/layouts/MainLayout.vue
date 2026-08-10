@@ -1,5 +1,6 @@
 <template>
   <div class="site-shell">
+    <CursorEffect />
     <RoutePreloader />
     <SiteHeader />
     <main>
@@ -15,6 +16,7 @@
 <script setup>
 import RoutePreloader from "../components/layout/RoutePreloader.vue";
 import BackToTop from "../components/layout/BackToTop.vue";
+import CursorEffect from "../components/layout/CursorEffect.vue";
 import SiteFooter from "../components/layout/SiteFooter.vue";
 import SiteHeader from "../components/layout/SiteHeader.vue";
 </script>

@@ -88,7 +88,7 @@
     </section>
 
     <section class="page-cta">
-      <p class="eyebrow">Part of Alphabomet Holdings</p>
+      <p class="eyebrow">A member company of Alphabomet Holdings</p>
       <h2>Building enterprises that power economies.</h2>
       <RouterLink to="/contact/partner-with-us" class="button-gold">
         Partner with us <ArrowRight :size="18" />
