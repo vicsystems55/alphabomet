@@ -1,18 +1,3 @@
-import agronomyLogo from "../assets/companies/agronomy.png";
-import astavattLogo from "../assets/companies/astavatt.png";
-import azzetzLogo from "../assets/companies/azzetz.png";
-import bonstructionLogo from "../assets/companies/bonstruction.png";
-import graychaseLogo from "../assets/companies/graychase.png";
-import kaspienLogo from "../assets/companies/kaspien.png";
-import licensaLogo from "../assets/companies/licensa.png";
-import openTaxLogo from "../assets/companies/opentax.png";
-import paymanentLogo from "../assets/companies/paymanent.png";
-import pegLogo from "../assets/companies/peg.png";
-import provagoLogo from "../assets/companies/provago.png";
-import reidmontLogo from "../assets/companies/reidmont.png";
-import saudhiLogo from "../assets/companies/saudhi.png";
-import underearthLogo from "../assets/companies/underearth.png";
-
 export const companyProfiles = [
   {
     slug: "saudhi-energy",
@@ -20,7 +5,7 @@ export const companyProfiles = [
     navigationName: "Saudhi Energy",
     group: "Energy",
     sector: "Oil & Gas",
-    logo: saudhiLogo,
+    logoKey: "saudhi",
     overview:
       "An integrated oil and gas company providing upstream, midstream and downstream energy solutions.",
     strategicRole: "Energy security",
@@ -33,7 +18,7 @@ export const companyProfiles = [
     navigationName: "Reidmont",
     group: "Energy",
     sector: "Renewable Energy",
-    logo: reidmontLogo,
+    logoKey: "reidmont",
     overview:
       "Developing utility-scale solar, hydro, biomass, battery storage and clean energy infrastructure.",
     strategicRole: "Clean energy transition",
@@ -46,7 +31,7 @@ export const companyProfiles = [
     navigationName: "Agronomy Development",
     group: "Agriculture",
     sector: "Agriculture & Food Security",
-    logo: agronomyLogo,
+    logoKey: "agronomy",
     overview:
       "Commercial agriculture and agribusiness solutions spanning irrigation, livestock, food processing and food security.",
     strategicRole: "Food security",
@@ -59,7 +44,7 @@ export const companyProfiles = [
     navigationName: "Bonstruction",
     group: "Infrastructure",
     sector: "Construction & Infrastructure",
-    logo: bonstructionLogo,
+    logoKey: "bonstruction",
     overview:
       "Engineering, civil construction, infrastructure development and project execution for complex built-environment needs.",
     strategicRole: "Infrastructure development",
@@ -72,7 +57,7 @@ export const companyProfiles = [
     navigationName: "Azzetz",
     group: "Infrastructure",
     sector: "Real Estate",
-    logo: azzetzLogo,
+    logoKey: "azzetz",
     overview:
       "Residential, commercial and mixed-use property development designed for the needs of growing African markets.",
     strategicRole: "Urban development",
@@ -85,7 +70,7 @@ export const companyProfiles = [
     navigationName: "Underearth",
     group: "Mining",
     sector: "Mining & Natural Resources",
-    logo: underearthLogo,
+    logoKey: "underearth",
     overview:
       "Mineral exploration, mining, beneficiation, trading and responsible natural-resource development.",
     strategicRole: "Resource development",
@@ -99,7 +84,7 @@ export const companyProfiles = [
     abbreviation: "PEG",
     group: "Logistics",
     sector: "Logistics & Shipping",
-    logo: pegLogo,
+    logoKey: "peg",
     overview:
       "Maritime logistics, freight forwarding, customs brokerage, warehousing and integrated supply-chain management.",
     strategicRole: "Global trade enablement",
@@ -112,7 +97,7 @@ export const companyProfiles = [
     navigationName: "Licensa",
     group: "Technology",
     sector: "Government Technology",
-    logo: licensaLogo,
+    logoKey: "licensa",
     overview:
       "An intelligent licensing platform connecting governments, businesses and citizens through efficient digital services.",
     strategicRole: "Digital governance",
@@ -125,7 +110,7 @@ export const companyProfiles = [
     navigationName: "OpenTax",
     group: "Technology",
     sector: "Tax Technology",
-    logo: openTaxLogo,
+    logoKey: "opentax",
     overview:
       "Digital tax compliance, consultancy, tax management and revenue solutions for modern economies.",
     strategicRole: "Revenue modernization",
@@ -138,7 +123,7 @@ export const companyProfiles = [
     navigationName: "Paymanent",
     group: "Financial Services",
     sector: "Financial Technology",
-    logo: paymanentLogo,
+    logoKey: "paymanent",
     overview:
       "Digital payments, remittance, blockchain settlement, wallets and embedded-finance infrastructure.",
     strategicRole: "Financial inclusion",
@@ -151,7 +136,7 @@ export const companyProfiles = [
     navigationName: "Intelurgent",
     group: "Technology",
     sector: "Artificial Intelligence, IT & Data Centers",
-    logo: null,
+    logoKey: null,
     overview:
       "AI, enterprise software, cybersecurity, cloud infrastructure, managed IT services and data-center management.",
     strategicRole: "Digital transformation",
@@ -164,7 +149,7 @@ export const companyProfiles = [
     navigationName: "Astavatt",
     group: "Technology",
     sector: "Technology & Innovation",
-    logo: astavattLogo,
+    logoKey: "astavatt",
     overview:
       "Digital technologies and enterprise innovation solutions created to help organizations transform and grow.",
     capabilities: ["Digital technology", "Enterprise innovation", "Transformation solutions"],
@@ -175,7 +160,7 @@ export const companyProfiles = [
     navigationName: "Provago",
     group: "Technology",
     sector: "Enterprise Services",
-    logo: provagoLogo,
+    logoKey: "provago",
     overview:
       "Quality assurance and enterprise support solutions that strengthen performance and operating confidence.",
     capabilities: ["Quality assurance", "Enterprise support", "Operational enablement"],
@@ -186,7 +171,7 @@ export const companyProfiles = [
     navigationName: "Graychase",
     group: "Investment",
     sector: "Investment & Capital",
-    logo: graychaseLogo,
+    logoKey: "graychase",
     overview:
       "Investment, capital advisory and strategic asset development focused on long-term value creation.",
     capabilities: ["Investment strategy", "Capital advisory", "Asset development"],
@@ -197,7 +182,7 @@ export const companyProfiles = [
     navigationName: "Kaspien",
     group: "Investment",
     sector: "Investment & Venture Development",
-    logo: kaspienLogo,
+    logoKey: "kaspien",
     overview:
       "Venture development, investment and growth enablement for ambitious enterprises and emerging opportunities.",
     capabilities: ["Venture development", "Growth investment", "Business enablement"],
@@ -208,7 +193,7 @@ export const companyProfiles = [
     navigationName: "Airlandeep International",
     group: "Defence",
     sector: "Defence Technology",
-    logo: null,
+    logoKey: null,
     overview:
       "Defense technologies, surveillance systems, security equipment, integrated services and mission support.",
     strategicRole: "National security",

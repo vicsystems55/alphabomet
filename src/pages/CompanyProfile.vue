@@ -20,7 +20,11 @@
 
         <div class="company-profile__brand">
           <div class="company-profile__logo">
-            <img v-if="company.logo" :src="company.logo" :alt="`${company.name} logo`" />
+            <CompanyLogo
+              v-if="company.logoKey"
+              :logo-key="company.logoKey"
+              :alt="`${company.name} logo`"
+            />
             <span v-else>{{ initials }}</span>
           </div>
           <div>
@@ -101,6 +105,7 @@
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { ArrowRight, ChevronRight } from "@lucide/vue";
+import CompanyLogo from "../components/shared/CompanyLogo.vue";
 import { companyBySlug } from "../data/companyProfiles";
 import buildingImage from "../assets/images/building.jpg";
 import officeImage from "../assets/images/office.jpg";

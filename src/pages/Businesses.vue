@@ -67,7 +67,11 @@
           class="company-directory__card"
         >
           <div class="company-directory__logo">
-            <img v-if="company.logo" :src="company.logo" :alt="`${company.name} logo`" />
+            <CompanyLogo
+              v-if="company.logoKey"
+              :logo-key="company.logoKey"
+              :alt="`${company.name} logo`"
+            />
             <span v-else>{{ companyInitials(company.name) }}</span>
           </div>
           <div>
@@ -104,6 +108,7 @@ import {
   Zap,
 } from "@lucide/vue";
 import PageHero from "../components/shared/PageHero.vue";
+import CompanyLogo from "../components/shared/CompanyLogo.vue";
 import { businessGroups } from "../data/siteNavigation";
 import { companyProfiles } from "../data/companyProfiles";
 

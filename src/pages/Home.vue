@@ -1,9 +1,8 @@
 <template>
   <div ref="homePage">
-    <!-- Previous rotating slider and standalone stats are intentionally disabled. -->
-    <!-- <HomeHeroSlider /> -->
+    <!-- The previous standalone globe hero is retained in the codebase but disabled. -->
+    <HomeHeroSlider />
     <!-- <HomeStats /> -->
-    <HomeGlobeHero />
     <HomeEcosystem />
     <HomeImpact />
     <HomeActionStrip />
@@ -17,11 +16,10 @@
 import { onBeforeUnmount, onMounted, ref } from "vue";
 import { useHead } from "@unhead/vue";
 
-import HomeGlobeHero from "../components/hero/HomeGlobeHero.vue";
+import HomeHeroSlider from "../components/hero/HomeHeroSlider.vue";
 import HomeActionStrip from "../components/home/HomeActionStrip.vue";
 import HomeEcosystem from "../components/home/HomeEcosystem.vue";
 import HomeImpact from "../components/home/HomeImpact.vue";
-// import HomeHeroSlider from "../components/hero/HomeHeroSlider.vue";
 // import HomeStats from "../components/home/HomeStats.vue";
 // import HomeBusinesses from "../components/home/HomeBusinesses.vue";
 // import HomeStrategy from "../components/home/HomeStrategy.vue";

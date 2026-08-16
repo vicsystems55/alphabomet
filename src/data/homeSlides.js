@@ -1,47 +1,73 @@
-import officeImage from "../assets/images/slides/office.jpg";
-import agricultureImage from "../assets/images/slides/agriculture.jpg";
-import logisticsImage from "../assets/images/slides/logistics.jpg";
-import corporateOfficeImage from "../assets/images/slides/corporate-office.jpg";
+import agronomyImage from "../assets/slide-3.png";
+import bonstructionImage from "../assets/slide-1.png";
+import industrialImage from "../assets/slide-2.png";
+import energyImage from "../assets/images/globe.jpg";
+import fintechImage from "../assets/images/office.jpg";
 
 export const homeSlides = [
   {
     id: 1,
-    label: "Corporate Headquarters",
-    title: "Building Enterprises That Power Economies",
+    company: "Bonstruction Engineering",
+    sector: "Infrastructure",
+    title: "Infrastructure that moves economies forward.",
     subtitle:
-      "Africa-focused. Globally positioned. Building sustainable value through investment, infrastructure, technology and trade.",
-    buttonText: "Discover Our Businesses",
-    buttonLink: "/businesses",
-    image: officeImage,
+      "Delivering engineering, civil construction and resilient infrastructure for Africa's next generation of growth.",
+    buttonText: "Explore Bonstruction",
+    buttonLink: "/businesses/infrastructure/bonstruction-engineering",
+    image: bonstructionImage,
+    logoKey: "bonstruction",
+    imagePosition: "center",
   },
   {
     id: 2,
-    label: "Agriculture",
-    title: "Agriculture For a Sustainable Tomorrow",
+    company: "Saudhi Energy",
+    sector: "Oil & Gas",
+    title: "Powering progress across the energy value chain.",
     subtitle:
-      "Investing in modern agriculture and agri-businesses that enhance food security, empower communities and drive inclusive growth.",
-    buttonText: "Explore Agriculture",
-    buttonLink: "/businesses",
-    image: agricultureImage,
+      "Advancing integrated upstream, midstream and downstream solutions that strengthen energy security and economic development.",
+    buttonText: "Explore Saudhi Energy",
+    buttonLink: "/businesses/energy/saudhi-energy",
+    image: energyImage,
+    logoKey: "saudhi",
+    imagePosition: "center",
   },
   {
     id: 3,
-    label: "Global Logistics",
-    title: "Global Logistics. Connecting Opportunities",
+    company: "Agronomy Development",
+    sector: "Agriculture",
+    title: "Cultivating food security. Growing shared prosperity.",
     subtitle:
-      "Delivering integrated logistics and trade solutions that connect markets, enable commerce and drive economic growth.",
-    buttonText: "Explore Logistics",
-    buttonLink: "/businesses",
-    image: logisticsImage,
+      "Building modern agribusiness systems that improve productivity, strengthen value chains and nourish communities.",
+    buttonText: "Explore Agronomy",
+    buttonLink: "/businesses/agriculture/agronomy-development",
+    image: agronomyImage,
+    logoKey: "agronomy",
+    imagePosition: "center",
   },
   {
     id: 4,
-    label: "Global Corporate Office",
-    title: "A Global Presence. A Local Commitment",
+    company: "Underearth",
+    sector: "Mining",
+    title: "Unlocking resources with responsibility.",
     subtitle:
-      "Driving strategy, governance and innovation to unite our businesses and create lasting impact across Africa and beyond.",
-    buttonText: "Partner With Us",
-    buttonLink: "/partnerships",
-    image: corporateOfficeImage,
+      "Developing Africa's mineral potential through responsible exploration, beneficiation and long-term value creation.",
+    buttonText: "Explore Underearth",
+    buttonLink: "/businesses/mining/underearth",
+    image: industrialImage,
+    logoKey: "underearth",
+    imagePosition: "center",
+  },
+  {
+    id: 5,
+    company: "Paymanent",
+    sector: "Fintech",
+    title: "Digital finance designed to move without borders.",
+    subtitle:
+      "Enabling inclusive payments, remittance, digital wallets and embedded-finance infrastructure for modern African markets.",
+    buttonText: "Explore Paymanent",
+    buttonLink: "/businesses/financial-services/paymanent",
+    image: fintechImage,
+    logoKey: "paymanent",
+    imagePosition: "center",
   },
 ];

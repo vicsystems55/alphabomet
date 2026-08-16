@@ -35,7 +35,11 @@
         class="home-company-card"
       >
         <div class="home-company-card__logo">
-          <img v-if="company.logo" :src="company.logo" :alt="`${company.name} logo`" />
+          <CompanyLogo
+            v-if="company.logoKey"
+            :logo-key="company.logoKey"
+            :alt="`${company.name} logo`"
+          />
           <span v-else>{{ initials(company.name) }}</span>
         </div>
         <div class="home-company-card__footer">
@@ -50,6 +54,7 @@
 <script setup>
 import { computed, ref } from "vue";
 import { ArrowRight, ArrowUpRight } from "@lucide/vue";
+import CompanyLogo from "../shared/CompanyLogo.vue";
 import { companyProfiles } from "../../data/companyProfiles";
 
 const activeFilter = ref("All sectors");

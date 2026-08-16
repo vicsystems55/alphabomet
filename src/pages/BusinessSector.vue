@@ -51,7 +51,11 @@
           :to="`/businesses/${groupSlug}/${company.slug}`"
         >
           <div>
-            <img v-if="company.logo" :src="company.logo" :alt="`${company.name} logo`" />
+            <CompanyLogo
+              v-if="company.logoKey"
+              :logo-key="company.logoKey"
+              :alt="`${company.name} logo`"
+            />
             <span v-else>{{ initials(company.name) }}</span>
           </div>
           <p>{{ company.sector }}</p>
@@ -75,6 +79,7 @@
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { ArrowRight, ArrowUpRight, ChevronRight } from "@lucide/vue";
+import CompanyLogo from "../components/shared/CompanyLogo.vue";
 import { businessGroups } from "../data/siteNavigation";
 import aboutImage from "../assets/slide-1.png";
 import logisticsImage from "../assets/slide-2.png";
@@ -132,6 +137,7 @@ const initials = (name) =>
 <style scoped>
 .sector-page__hero {
   position: relative;
+  isolation: isolate;
   display: flex;
   align-items: end;
   min-height: 44rem;
@@ -151,6 +157,7 @@ const initials = (name) =>
 .sector-page__hero-image::after {
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background:
     linear-gradient(90deg, rgba(25, 2, 3, 0.96), rgba(74, 7, 11, 0.7) 52%, rgba(0, 0, 0, 0.2)),
     linear-gradient(0deg, rgba(25, 2, 3, 0.65), transparent 55%);

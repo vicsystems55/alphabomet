@@ -148,8 +148,13 @@ onBeforeUnmount(() => {
 .cursor-ripples {
   --cursor-accent: var(--wine);
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   z-index: 260;
+  width: 0;
+  height: 0;
+  overflow: visible;
+  background: transparent;
   pointer-events: none;
 }
 
@@ -222,8 +227,8 @@ onBeforeUnmount(() => {
   animation: cursor-ripple 700ms cubic-bezier(.18, .72, .2, 1) forwards;
 }
 
-:global(html[data-theme="dark"]) .cursor-effect,
-:global(html[data-theme="dark"]) .cursor-ripples {
+:global(html[data-theme="dark"] .cursor-effect),
+:global(html[data-theme="dark"] .cursor-ripples) {
   --cursor-accent: var(--gold);
 }
 
