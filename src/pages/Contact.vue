@@ -38,27 +38,27 @@
         <span id="careers" class="contact-form__anchor" aria-hidden="true"></span>
         <span id="partnerships" class="contact-form__anchor" aria-hidden="true"></span>
         <header>
-          <p class="eyebrow">Send an enquiry</p>
+          <p class="eyebrow">WhatsApp enquiry</p>
           <h2>How can we help?</h2>
-          <p>Fields marked with an asterisk are required.</p>
+          <p>Complete the form and continue to WhatsApp to review and send your message.</p>
         </header>
 
         <div class="contact-form__grid">
           <label>
             <span>Full name *</span>
-            <input v-model.trim="form.name" name="name" type="text" autocomplete="name" required />
+            <input v-model.trim="form.name" name="name" type="text" autocomplete="name" maxlength="100" required />
           </label>
           <label>
             <span>Email address *</span>
-            <input v-model.trim="form.email" name="email" type="email" autocomplete="email" required />
+            <input v-model.trim="form.email" name="email" type="email" autocomplete="email" maxlength="160" required />
           </label>
           <label>
             <span>Phone number</span>
-            <input v-model.trim="form.phone" name="phone" type="tel" autocomplete="tel" />
+            <input v-model.trim="form.phone" name="phone" type="tel" autocomplete="tel" maxlength="40" />
           </label>
           <label>
             <span>Organisation</span>
-            <input v-model.trim="form.organisation" name="organisation" type="text" autocomplete="organization" />
+            <input v-model.trim="form.organisation" name="organisation" type="text" autocomplete="organization" maxlength="140" />
           </label>
           <label class="contact-form__wide">
             <span>Enquiry type *</span>
@@ -69,7 +69,7 @@
           </label>
           <label class="contact-form__wide">
             <span>Message *</span>
-            <textarea v-model.trim="form.message" name="message" rows="7" required></textarea>
+            <textarea v-model.trim="form.message" name="message" rows="7" maxlength="2000" required></textarea>
           </label>
         </div>
 
@@ -83,18 +83,12 @@
         </label>
 
         <div class="contact-form__footer">
-          <button type="submit" :disabled="submitState === 'submitting'">
-            {{ submitState === "submitting" ? "Sending..." : "Send enquiry" }}
-            <Send :size="17" />
+          <button type="submit">
+            Continue on WhatsApp
+            <MessageCircle :size="18" />
           </button>
-          <p
-            v-if="statusMessage"
-            class="contact-form__status"
-            :class="`contact-form__status--${submitState}`"
-            role="status"
-            aria-live="polite"
-          >
-            {{ statusMessage }}
+          <p class="contact-form__whatsapp-note">
+            Opens a chat with +234 816 844 5981. Review the prepared message, then tap Send.
           </p>
         </div>
       </form>
@@ -122,9 +116,9 @@
 </template>
 
 <script setup>
-import { reactive, ref, watch } from "vue";
+import { reactive, watch } from "vue";
 import { useRoute } from "vue-router";
-import { ArrowUpRight, MapPin, Send } from "@lucide/vue";
+import { ArrowUpRight, MapPin, MessageCircle } from "@lucide/vue";
 import PageHero from "../components/shared/PageHero.vue";
 import corporateImage from "../assets/corporate.jpg";
 
@@ -132,7 +126,7 @@ const officeAddress = "B2, Mikuch Ville Estate, Phase 4, Gaduwa, Gudu District, 
 const encodedAddress = encodeURIComponent(officeAddress);
 const mapEmbedUrl = `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
 const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-const formEndpoint = (import.meta.env.VITE_CONTACT_FORM_ENDPOINT || "").trim();
+const whatsappNumber = "2348168445981";
 
 const enquiryTopics = [
   "General enquiry",
@@ -153,8 +147,6 @@ const emptyForm = () => ({
 });
 
 const form = reactive(emptyForm());
-const submitState = ref("idle");
-const statusMessage = ref("");
 const route = useRoute();
 
 watch(
@@ -166,47 +158,29 @@ watch(
   { immediate: true },
 );
 
-const submitEnquiry = async () => {
-  if (form.website) {
-    submitState.value = "success";
-    statusMessage.value = "Thank you. Your enquiry has been received.";
-    return;
-  }
+const submitEnquiry = () => {
+  if (form.website) return;
 
-  if (!formEndpoint) {
-    submitState.value = "configuration";
-    statusMessage.value = "Online delivery is not configured yet, so your message has not been sent.";
-    return;
-  }
+  const formattedMessage = [
+    "Hello Alphabomet Holdings,",
+    "",
+    "*New Website Enquiry*",
+    `*Name:* ${form.name}`,
+    `*Email:* ${form.email}`,
+    `*Phone:* ${form.phone || "Not provided"}`,
+    `*Organisation:* ${form.organisation || "Not provided"}`,
+    `*Enquiry Type:* ${form.enquiryType}`,
+    "",
+    "*Message:*",
+    form.message,
+  ].join("\n");
 
-  submitState.value = "submitting";
-  statusMessage.value = "";
-
-  try {
-    const response = await fetch(formEndpoint, {
-      method: "POST",
-      headers: { Accept: "application/json", "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        organisation: form.organisation,
-        enquiryType: form.enquiryType,
-        message: form.message,
-        office: officeAddress,
-        source: "Alphabomet Holdings website",
-      }),
-    });
-
-    if (!response.ok) throw new Error(`Contact request failed with ${response.status}`);
-
-    Object.assign(form, emptyForm());
-    submitState.value = "success";
-    statusMessage.value = "Thank you. Your enquiry has been sent successfully.";
-  } catch {
-    submitState.value = "error";
-    statusMessage.value = "We could not send your enquiry. Please try again after a short while.";
-  }
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedMessage)}`;
+  const link = document.createElement("a");
+  link.href = whatsappUrl;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.click();
 };
 </script>
 
@@ -436,8 +410,8 @@ const submitEnquiry = async () => {
   gap: .7rem;
   min-height: 3.35rem;
   padding: 0 1.25rem;
-  border: 1px solid var(--wine);
-  background: var(--wine);
+  border: 1px solid #168c55;
+  background: #168c55;
   color: #ffffff;
   font-size: .64rem;
   font-weight: 700;
@@ -447,26 +421,18 @@ const submitEnquiry = async () => {
   transition: 180ms ease;
 }
 
-.contact-form__footer button:hover:not(:disabled) {
-  background: var(--wine-deep);
+.contact-form__footer button:hover {
+  border-color: #107544;
+  background: #107544;
   transform: translateY(-2px);
 }
 
-.contact-form__footer button:disabled {
-  cursor: wait;
-  opacity: .65;
-}
-
-.contact-form__status {
+.contact-form__whatsapp-note {
   margin: 0;
   color: var(--text-secondary);
   font-size: .7rem;
   line-height: 1.55;
 }
-
-.contact-form__status--success { color: #2e6b4e; }
-.contact-form__status--error,
-.contact-form__status--configuration { color: var(--wine); }
 
 .contact-page__map {
   padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2));
