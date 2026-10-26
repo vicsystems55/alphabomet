@@ -1,127 +1,224 @@
 <template>
   <div class="contact-page">
     <PageHero
-      eyebrow="Contact Alphabomet"
-      title="The next opportunity starts with a conversation."
-      summary="Connect with the right part of our Group for corporate enquiries, investments, partnerships, careers and media."
+      class="contact-page__hero"
+      eyebrow="Contact Us"
+      title="Let's start a meaningful conversation."
+      summary="Reach Alphabomet Holdings for corporate enquiries, careers, partnerships and other Group-level conversations."
       index="06"
       :image="corporateImage"
     />
 
-    <section class="contact-page__intro">
-      <div>
-        <p class="eyebrow">Connect with us</p>
-        <h2>Different ambitions.<br />One place to begin.</h2>
-      </div>
-      <p>
-        Alphabomet works with governments, investors, industries, entrepreneurs and
-        communities. Choose the enquiry path that best reflects your interest and our
-        team will direct the conversation appropriately.
-      </p>
-    </section>
-
-    <section class="contact-page__channels">
-      <RouterLink v-for="(channel, index) in channels" :key="channel.title" :to="channel.path">
-        <span>0{{ index + 1 }}</span>
-        <component :is="channel.icon" :size="28" stroke-width="1.35" />
-        <div>
-          <h2>{{ channel.title }}</h2>
-          <p>{{ channel.description }}</p>
-        </div>
-        <ArrowUpRight :size="21" />
-      </RouterLink>
-    </section>
-
-    <section class="contact-page__presence">
-      <div class="contact-page__presence-heading">
-        <p class="eyebrow">Geographic focus</p>
-        <h2>African-led.<br />Globally positioned.</h2>
-        <p>
-          Our footprint begins in Nigeria and expands through regional, continental
-          and strategic international markets.
+    <section class="contact-page__main">
+      <div class="contact-page__information">
+        <p class="eyebrow">Contact Alphabomet</p>
+        <h2>One place to begin.</h2>
+        <p class="contact-page__lead">
+          Tell us what you would like to discuss and provide enough context for your
+          enquiry to reach the appropriate team.
         </p>
+
+        <address class="contact-page__address">
+          <MapPin :size="29" stroke-width="1.35" />
+          <div>
+            <span>Abuja office</span>
+            <strong>{{ officeAddress }}</strong>
+          </div>
+          <a :href="mapsUrl" target="_blank" rel="noopener noreferrer">
+            Get directions <ArrowUpRight :size="16" />
+          </a>
+        </address>
+
+        <div class="contact-page__topics" aria-label="Enquiry categories">
+          <span v-for="topic in enquiryTopics" :key="topic">{{ topic }}</span>
+        </div>
       </div>
-      <div class="contact-page__presence-grid">
-        <article v-for="location in locations" :key="location.level">
-          <span>{{ location.level }}</span>
-          <h3>{{ location.place }}</h3>
-        </article>
-      </div>
+
+      <form id="enquiries" class="contact-form" @submit.prevent="submitEnquiry">
+        <span id="careers" class="contact-form__anchor" aria-hidden="true"></span>
+        <span id="partnerships" class="contact-form__anchor" aria-hidden="true"></span>
+        <header>
+          <p class="eyebrow">Send an enquiry</p>
+          <h2>How can we help?</h2>
+          <p>Fields marked with an asterisk are required.</p>
+        </header>
+
+        <div class="contact-form__grid">
+          <label>
+            <span>Full name *</span>
+            <input v-model.trim="form.name" name="name" type="text" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Email address *</span>
+            <input v-model.trim="form.email" name="email" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            <span>Phone number</span>
+            <input v-model.trim="form.phone" name="phone" type="tel" autocomplete="tel" />
+          </label>
+          <label>
+            <span>Organisation</span>
+            <input v-model.trim="form.organisation" name="organisation" type="text" autocomplete="organization" />
+          </label>
+          <label class="contact-form__wide">
+            <span>Enquiry type *</span>
+            <select v-model="form.enquiryType" name="enquiryType" required>
+              <option disabled value="">Select an enquiry type</option>
+              <option v-for="topic in enquiryTopics" :key="topic" :value="topic">{{ topic }}</option>
+            </select>
+          </label>
+          <label class="contact-form__wide">
+            <span>Message *</span>
+            <textarea v-model.trim="form.message" name="message" rows="7" required></textarea>
+          </label>
+        </div>
+
+        <label class="contact-form__consent">
+          <input v-model="form.consent" name="consent" type="checkbox" required />
+          <span>I agree to be contacted regarding this enquiry.</span>
+        </label>
+        <label class="contact-form__trap" aria-hidden="true">
+          Website
+          <input v-model="form.website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </label>
+
+        <div class="contact-form__footer">
+          <button type="submit" :disabled="submitState === 'submitting'">
+            {{ submitState === "submitting" ? "Sending..." : "Send enquiry" }}
+            <Send :size="17" />
+          </button>
+          <p
+            v-if="statusMessage"
+            class="contact-form__status"
+            :class="`contact-form__status--${submitState}`"
+            role="status"
+            aria-live="polite"
+          >
+            {{ statusMessage }}
+          </p>
+        </div>
+      </form>
     </section>
 
-    <section class="contact-page__note">
-      <div>
-        <p class="eyebrow">Corporate information</p>
-        <h2>Official contact details are being prepared.</h2>
+    <section id="location" class="contact-page__map" aria-labelledby="contact-map-title">
+      <div class="contact-page__map-heading">
+        <div>
+          <p class="eyebrow">Our location</p>
+          <h2 id="contact-map-title">Find us in Abuja.</h2>
+        </div>
+        <p>{{ officeAddress }}</p>
       </div>
-      <p>
-        Verified office addresses, telephone numbers and corporate email channels
-        will be published here once supplied. This prevents unverified information
-        from appearing on the public website.
-      </p>
-    </section>
-
-    <section class="page-cta">
-      <p class="eyebrow">Explore Alphabomet</p>
-      <h2>Discover the enterprises creating Africa's next opportunities.</h2>
-      <RouterLink to="/businesses" class="button-gold">
-        Our businesses <ArrowRight :size="18" />
-      </RouterLink>
+      <div class="contact-page__map-frame">
+        <iframe
+          :src="mapEmbedUrl"
+          title="Google Map showing the Alphabomet Holdings office in Abuja, Nigeria"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
     </section>
   </div>
 </template>
 
 <script setup>
-import {
-  ArrowRight,
-  ArrowUpRight,
-  BriefcaseBusiness,
-  Handshake,
-  MapPin,
-  MessageSquareText,
-} from "@lucide/vue";
+import { reactive, ref, watch } from "vue";
+import { useRoute } from "vue-router";
+import { ArrowUpRight, MapPin, Send } from "@lucide/vue";
 import PageHero from "../components/shared/PageHero.vue";
 import corporateImage from "../assets/corporate.jpg";
 
-const channels = [
-  {
-    icon: MessageSquareText,
-    title: "Corporate enquiries",
-    description: "General information, media and Group-level correspondence.",
-    path: "/contact/contact-us",
-  },
-  {
-    icon: BriefcaseBusiness,
-    title: "Careers",
-    description: "Explore opportunities across Alphabomet and our portfolio companies.",
-    path: "/contact/careers",
-  },
-  {
-    icon: Handshake,
-    title: "Partner with us",
-    description: "Investment, government, industry and strategic partnership conversations.",
-    path: "/contact/partner-with-us",
-  },
-  {
-    icon: MapPin,
-    title: "Locations",
-    description: "Learn about our geographic focus and growing market presence.",
-    path: "/contact/locations",
-  },
+const officeAddress = "B2, Mikuch Ville Estate, Phase 4, Gaduwa, Gudu District, FCT-Abuja";
+const encodedAddress = encodeURIComponent(officeAddress);
+const mapEmbedUrl = `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
+const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+const formEndpoint = (import.meta.env.VITE_CONTACT_FORM_ENDPOINT || "").trim();
+
+const enquiryTopics = [
+  "General enquiry",
+  "Careers",
+  "Partnerships and investment",
+  "Media and communications",
 ];
 
-const locations = [
-  { level: "Primary", place: "Nigeria" },
-  { level: "Regional", place: "West Africa" },
-  { level: "Continental", place: "Africa" },
-  { level: "Global", place: "Strategic International Markets" },
-];
+const emptyForm = () => ({
+  name: "",
+  email: "",
+  phone: "",
+  organisation: "",
+  enquiryType: "",
+  message: "",
+  consent: false,
+  website: "",
+});
+
+const form = reactive(emptyForm());
+const submitState = ref("idle");
+const statusMessage = ref("");
+const route = useRoute();
+
+watch(
+  () => route.hash,
+  (hash) => {
+    if (hash === "#careers") form.enquiryType = "Careers";
+    if (hash === "#partnerships") form.enquiryType = "Partnerships and investment";
+  },
+  { immediate: true },
+);
+
+const submitEnquiry = async () => {
+  if (form.website) {
+    submitState.value = "success";
+    statusMessage.value = "Thank you. Your enquiry has been received.";
+    return;
+  }
+
+  if (!formEndpoint) {
+    submitState.value = "configuration";
+    statusMessage.value = "Online delivery is not configured yet, so your message has not been sent.";
+    return;
+  }
+
+  submitState.value = "submitting";
+  statusMessage.value = "";
+
+  try {
+    const response = await fetch(formEndpoint, {
+      method: "POST",
+      headers: { Accept: "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        organisation: form.organisation,
+        enquiryType: form.enquiryType,
+        message: form.message,
+        office: officeAddress,
+        source: "Alphabomet Holdings website",
+      }),
+    });
+
+    if (!response.ok) throw new Error(`Contact request failed with ${response.status}`);
+
+    Object.assign(form, emptyForm());
+    submitState.value = "success";
+    statusMessage.value = "Thank you. Your enquiry has been sent successfully.";
+  } catch {
+    submitState.value = "error";
+    statusMessage.value = "We could not send your enquiry. Please try again after a short while.";
+  }
+};
 </script>
 
 <style scoped>
-.contact-page__intro {
+.contact-page__hero {
+  min-height: 38rem;
+  padding-bottom: 5rem;
+}
+
+.contact-page__main {
   display: grid;
-  grid-template-columns: 1fr 0.8fr;
+  grid-template-columns: .82fr 1.18fr;
   gap: clamp(3rem, 8vw, 8rem);
   width: min(100% - 3rem, 82rem);
   margin: 0 auto;
@@ -134,180 +231,295 @@ const locations = [
   font-family: var(--font-heading);
   font-size: clamp(2.7rem, 5vw, 4.7rem);
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: -.03em;
   line-height: 1;
 }
 
-.contact-page__intro > p {
-  align-self: end;
-  margin: 0;
+.contact-page__information { align-self: start; }
+
+.contact-page__lead {
+  max-width: 34rem;
+  margin: 1.6rem 0 0;
   color: var(--text-secondary);
   line-height: 1.85;
 }
 
-.contact-page__channels {
+.contact-page__address {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding: 0 max(1.5rem, calc((100vw - 82rem) / 2)) 7rem;
-}
-
-.contact-page__channels > a {
-  position: relative;
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  gap: 1.6rem;
-  min-height: 19rem;
-  padding: 2rem;
-  border-top: 1px solid var(--border-subtle);
-  border-left: 1px solid var(--border-subtle);
-  transition: 220ms ease;
-}
-
-.contact-page__channels > a:nth-child(even) {
-  border-right: 1px solid var(--border-subtle);
-}
-
-.contact-page__channels > a:nth-child(n+3) {
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.contact-page__channels > a > span {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  color: rgba(128, 20, 24, 0.42);
-  font-size: 0.62rem;
-  font-weight: 700;
-}
-
-.contact-page__channels > a > svg:first-of-type {
-  margin-top: auto;
-  color: var(--heading-color);
-}
-
-.contact-page__channels > a > div {
-  align-self: end;
-}
-
-.contact-page__channels h2 {
-  font-size: 2rem;
-}
-
-.contact-page__channels p {
-  max-width: 25rem;
-  margin: 0.8rem 0 0;
-  color: var(--text-secondary);
-  font-size: 0.78rem;
-  line-height: 1.7;
-}
-
-.contact-page__channels > a > svg:last-child {
-  position: absolute;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  color: var(--heading-color);
-}
-
-.contact-page__channels > a:hover {
-  z-index: 1;
-  background: var(--wine);
-  box-shadow: 0 1.5rem 3rem rgba(74, 7, 11, 0.18);
-  transform: translateY(-0.3rem);
-}
-
-.contact-page__channels > a:hover h2,
-.contact-page__channels > a:hover > svg {
-  color: var(--gold);
-}
-
-.contact-page__channels > a:hover p,
-.contact-page__channels > a:hover > span {
-  color: rgba(248, 244, 238, 0.65);
-}
-
-.contact-page__presence {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 5rem;
-  padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2));
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem;
+  margin-top: 3rem;
+  padding: 1.6rem;
+  border: 1px solid rgba(220, 193, 144, .24);
   background: var(--wine-deep);
   color: var(--cream);
+  font-style: normal;
 }
 
-.contact-page__presence .eyebrow {
+.contact-page__address > svg {
+  margin-top: .2rem;
   color: var(--gold);
 }
 
-.contact-page__presence h2 {
-  color: var(--cream);
-}
+.contact-page__address span,
+.contact-page__address strong { display: block; }
 
-.contact-page__presence-heading > p:last-child {
-  max-width: 31rem;
-  color: rgba(248, 244, 238, 0.62);
-  line-height: 1.8;
-}
-
-.contact-page__presence-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid rgba(220, 193, 144, 0.18);
-  border-left: 1px solid rgba(220, 193, 144, 0.18);
-}
-
-.contact-page__presence-grid article {
-  min-height: 11rem;
-  padding: 1.5rem;
-  border-right: 1px solid rgba(220, 193, 144, 0.18);
-  border-bottom: 1px solid rgba(220, 193, 144, 0.18);
-}
-
-.contact-page__presence-grid span {
-  color: rgba(220, 193, 144, 0.65);
-  font-size: 0.6rem;
+.contact-page__address span {
+  color: rgba(248, 244, 238, .58);
+  font-size: .6rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
 }
 
-.contact-page__presence-grid h3 {
-  margin: 3rem 0 0;
-  color: var(--gold);
+.contact-page__address strong {
+  margin-top: .55rem;
+  color: var(--cream);
   font-family: var(--font-heading);
-  font-size: 1.55rem;
-  line-height: 1.1;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
-.contact-page__note {
+.contact-page__address a {
+  grid-column: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  width: fit-content;
+  margin-top: .25rem;
+  color: var(--gold);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.contact-page__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: 2rem;
+}
+
+.contact-page__topics span {
+  padding: .65rem .8rem;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: .58rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.contact-form {
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-secondary);
+  box-shadow: 0 1.5rem 4rem var(--shadow-surface);
+  scroll-margin-top: 7rem;
+}
+
+.contact-form__anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.contact-form header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.contact-form header h2 { font-size: clamp(2.3rem, 4vw, 3.5rem); }
+
+.contact-form header > p:last-child {
+  margin: .8rem 0 0;
+  color: var(--text-tertiary);
+  font-size: .72rem;
+}
+
+.contact-form__grid {
   display: grid;
-  grid-template-columns: 1fr 0.8fr;
-  gap: 5rem;
-  width: min(100% - 3rem, 82rem);
-  margin: 0 auto;
-  padding: 6rem 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
 }
 
-.contact-page__note h2 {
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
+.contact-form label {
+  display: grid;
+  gap: .55rem;
 }
 
-.contact-page__note > p {
-  align-self: end;
+.contact-form label > span {
+  color: var(--text-secondary);
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--border-medium);
+  border-radius: 0;
+  outline: 0;
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  color-scheme: inherit;
+  font: inherit;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.contact-form input,
+.contact-form select {
+  min-height: 3.35rem;
+  padding: 0 .9rem;
+}
+
+.contact-form textarea {
+  min-height: 10rem;
+  padding: .9rem;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: var(--wine);
+  box-shadow: 0 0 0 3px rgba(128, 20, 24, .1);
+}
+
+.contact-form__wide { grid-column: 1 / -1; }
+
+.contact-form__consent {
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+.contact-form__consent input {
+  width: 1rem;
+  min-height: auto;
+  height: 1rem;
+  accent-color: var(--wine);
+}
+
+.contact-form__consent span {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.contact-form__trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-form__footer {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+
+.contact-form__footer button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  min-height: 3.35rem;
+  padding: 0 1.25rem;
+  border: 1px solid var(--wine);
+  background: var(--wine);
+  color: #ffffff;
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 180ms ease;
+}
+
+.contact-form__footer button:hover:not(:disabled) {
+  background: var(--wine-deep);
+  transform: translateY(-2px);
+}
+
+.contact-form__footer button:disabled {
+  cursor: wait;
+  opacity: .65;
+}
+
+.contact-form__status {
   margin: 0;
   color: var(--text-secondary);
-  line-height: 1.8;
+  font-size: .7rem;
+  line-height: 1.55;
 }
 
-@media (max-width: 720px) {
-  .contact-page__intro,
-  .contact-page__presence,
-  .contact-page__note { grid-template-columns: 1fr; gap: 2rem; }
-  .contact-page__intro,
-  .contact-page__note { width: calc(100% - 2.5rem); padding: 5rem 0; }
-  .contact-page__channels { grid-template-columns: 1fr; padding-bottom: 5rem; }
-  .contact-page__channels > a { min-height: 15rem; border-right: 1px solid var(--border-subtle); border-bottom: 0; }
-  .contact-page__channels > a:last-child { border-bottom: 1px solid var(--border-subtle); }
-  .contact-page__presence { padding: 5rem 1.25rem; }
-  .contact-page__presence-grid { grid-template-columns: 1fr; }
+.contact-form__status--success { color: #2e6b4e; }
+.contact-form__status--error,
+.contact-form__status--configuration { color: var(--wine); }
+
+.contact-page__map {
+  padding: 7rem max(1.5rem, calc((100vw - 82rem) / 2));
+  background: var(--surface-secondary);
+  scroll-margin-top: 6rem;
+}
+
+.contact-page__map-heading {
+  display: grid;
+  grid-template-columns: 1fr .7fr;
+  gap: clamp(2rem, 7vw, 7rem);
+  align-items: end;
+  margin-bottom: 3rem;
+}
+
+.contact-page__map-heading > p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+.contact-page__map-frame {
+  height: clamp(28rem, 58vw, 42rem);
+  overflow: hidden;
+  border: 1px solid var(--border-medium);
+  background: var(--surface-primary);
+}
+
+.contact-page__map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: saturate(.82) contrast(1.04);
+}
+
+@media (max-width: 850px) {
+  .contact-page__main,
+  .contact-page__map-heading { grid-template-columns: 1fr; }
+  .contact-page__main { gap: 4rem; padding: 5rem 0; }
+  .contact-page__information { max-width: 42rem; }
+  .contact-page__map { padding-top: 5rem; padding-bottom: 5rem; }
+}
+
+@media (max-width: 560px) {
+  .contact-page__main { width: calc(100% - 2.5rem); }
+  .contact-form { padding: 1.25rem; }
+  .contact-form__grid { grid-template-columns: 1fr; }
+  .contact-form__wide { grid-column: auto; }
+  .contact-form__footer { align-items: flex-start; flex-direction: column; }
+  .contact-page__address { grid-template-columns: 1fr; }
+  .contact-page__address a { grid-column: 1; }
+  .contact-page__map { padding-right: 1.25rem; padding-left: 1.25rem; }
+  .contact-page__map-frame { height: 28rem; }
 }
 </style>

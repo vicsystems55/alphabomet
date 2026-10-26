@@ -70,6 +70,6 @@ defineProps({
   ctaEyebrow: { type: String, default: "Build with us" },
   ctaTitle: String,
   ctaLabel: { type: String, default: "Start a conversation" },
-  ctaPath: { type: String, default: "/contact/partner-with-us" },
+  ctaPath: { type: String, default: "/contact#partnerships" },
 });
 </script>

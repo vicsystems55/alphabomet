@@ -11,60 +11,69 @@
       <nav class="desktop-nav" aria-label="Primary navigation">
         <RouterLink to="/" class="desktop-nav__link">Home</RouterLink>
 
-        <div
-          v-for="item in navigation"
-          :key="item.path"
-          class="desktop-nav__item"
-          @mouseenter="openMenu = item.path"
-          @mouseleave="openMenu = null"
-          @focusin="openMenu = item.path"
-          @focusout="onFocusOut"
-        >
-          <RouterLink :to="item.path" class="desktop-nav__link">
+        <template v-for="item in navigation" :key="item.path">
+          <RouterLink
+            v-if="!item.children?.length"
+            :to="item.path"
+            class="desktop-nav__link"
+          >
             {{ item.label }}
-            <ChevronDown :size="13" stroke-width="1.8" />
           </RouterLink>
 
-          <Transition name="dropdown">
-            <div
-              v-if="openMenu === item.path"
-              class="mega-menu"
-              :class="{ 'mega-menu--wide': item.featured }"
-            >
-              <div class="mega-menu__intro">
-                <span>Explore</span>
-                <h2>{{ item.label }}</h2>
-                <p>{{ item.intro }}</p>
-                <RouterLink :to="item.path" @click="closeAll">
-                  View overview <ArrowUpRight :size="16" />
-                </RouterLink>
-              </div>
+          <div
+            v-else
+            class="desktop-nav__item"
+            @mouseenter="openMenu = item.path"
+            @mouseleave="openMenu = null"
+            @focusin="openMenu = item.path"
+            @focusout="onFocusOut"
+          >
+            <RouterLink :to="item.path" class="desktop-nav__link">
+              {{ item.label }}
+              <ChevronDown :size="13" stroke-width="1.8" />
+            </RouterLink>
 
-              <div class="mega-menu__links" :class="{ 'mega-menu__links--grid': item.featured }">
-                <div v-for="child in item.children" :key="child.path" class="mega-menu__group">
-                  <RouterLink :to="child.path" @click="closeAll">
-                    {{ child.label }}
-                    <ArrowRight :size="14" />
-                  </RouterLink>
-                  <RouterLink
-                    v-for="company in child.children"
-                    :key="company.path"
-                    :to="company.path"
-                    class="mega-menu__company"
-                    @click="closeAll"
-                  >
-                    {{ company.label }}
+            <Transition name="dropdown">
+              <div
+                v-if="openMenu === item.path"
+                class="mega-menu"
+                :class="{ 'mega-menu--wide': item.featured }"
+              >
+                <div class="mega-menu__intro">
+                  <span>Explore</span>
+                  <h2>{{ item.label }}</h2>
+                  <p>{{ item.intro }}</p>
+                  <RouterLink :to="item.path" @click="closeAll">
+                    View overview <ArrowUpRight :size="16" />
                   </RouterLink>
                 </div>
+
+                <div class="mega-menu__links" :class="{ 'mega-menu__links--grid': item.featured }">
+                  <div v-for="child in item.children" :key="child.path" class="mega-menu__group">
+                    <RouterLink :to="child.path" @click="closeAll">
+                      {{ child.label }}
+                      <ArrowRight :size="14" />
+                    </RouterLink>
+                    <RouterLink
+                      v-for="company in child.children"
+                      :key="company.path"
+                      :to="company.path"
+                      class="mega-menu__company"
+                      @click="closeAll"
+                    >
+                      {{ company.label }}
+                    </RouterLink>
+                  </div>
+                </div>
               </div>
-            </div>
-          </Transition>
-        </div>
+            </Transition>
+          </div>
+        </template>
       </nav>
 
       <div class="header-actions">
         <ThemeToggle />
-        <RouterLink to="/contact/partner-with-us" class="header-cta">
+        <RouterLink to="/contact#partnerships" class="header-cta">
           Partner with us <ArrowUpRight :size="16" />
         </RouterLink>
       </div>
@@ -86,30 +95,41 @@
       <nav v-if="mobileOpen" id="mobile-navigation" class="mobile-nav" aria-label="Mobile navigation">
         <RouterLink to="/" class="mobile-nav__home" @click="closeAll">Home</RouterLink>
 
-        <div v-for="item in navigation" :key="item.path" class="mobile-nav__section">
-          <button type="button" @click="toggleMobileSection(item.path)">
+        <template v-for="item in navigation" :key="item.path">
+          <RouterLink
+            v-if="!item.children?.length"
+            :to="item.path"
+            class="mobile-nav__home"
+            @click="closeAll"
+          >
             {{ item.label }}
-            <ChevronDown
-              :size="18"
-              :class="{ 'rotate-180': mobileSection === item.path }"
-            />
-          </button>
-          <div v-if="mobileSection === item.path" class="mobile-nav__children">
-            <RouterLink :to="item.path" @click="closeAll">{{ item.label }} overview</RouterLink>
-            <template v-for="child in item.children" :key="child.path">
-              <RouterLink :to="child.path" @click="closeAll">{{ child.label }}</RouterLink>
-              <RouterLink
-                v-for="company in child.children"
-                :key="company.path"
-                :to="company.path"
-                class="mobile-nav__company"
-                @click="closeAll"
-              >
-                {{ company.label }}
-              </RouterLink>
-            </template>
+          </RouterLink>
+
+          <div v-else class="mobile-nav__section">
+            <button type="button" @click="toggleMobileSection(item.path)">
+              {{ item.label }}
+              <ChevronDown
+                :size="18"
+                :class="{ 'rotate-180': mobileSection === item.path }"
+              />
+            </button>
+            <div v-if="mobileSection === item.path" class="mobile-nav__children">
+              <RouterLink :to="item.path" @click="closeAll">{{ item.label }} overview</RouterLink>
+              <template v-for="child in item.children" :key="child.path">
+                <RouterLink :to="child.path" @click="closeAll">{{ child.label }}</RouterLink>
+                <RouterLink
+                  v-for="company in child.children"
+                  :key="company.path"
+                  :to="company.path"
+                  class="mobile-nav__company"
+                  @click="closeAll"
+                >
+                  {{ company.label }}
+                </RouterLink>
+              </template>
+            </div>
           </div>
-        </div>
+        </template>
       </nav>
     </Transition>
   </header>

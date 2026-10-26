@@ -36,8 +36,8 @@ const pageMeta = {
     description: "Read news, market perspectives and corporate updates from Alphabomet Holdings.",
   },
   "/contact": {
-    title: "Contact | Alphabomet Holdings",
-    description: "Connect with Alphabomet for partnerships, careers, investors and general enquiries.",
+    title: "Contact Us | Alphabomet Holdings",
+    description: "Contact Alphabomet Holdings in Abuja, Nigeria for corporate enquiries, careers and strategic partnerships.",
   },
 };
 
@@ -61,7 +61,6 @@ const developedAboutPages = new Set([
 const contentRoutes = flatNavigation.map((page) => {
   const isOverview = page.path in sectionComponents;
   const isCompany = Boolean(page.companySlug);
-  const isContactPage = page.path === "/contact/contact-us";
   const isChairmansMessage = page.path === "/about/chairmans-message";
   const isAboutDetail = developedAboutPages.has(page.path);
   const businessGroup = businessGroups.find(
@@ -88,8 +87,8 @@ const contentRoutes = flatNavigation.map((page) => {
       ? { alias: `/${page.path.split("/").slice(2).join("/")}` }
       : {}),
     name: page.path.slice(1).replaceAll("/", "-"),
-    component: isOverview || isContactPage
-      ? (sectionComponents[page.path] || Contact)
+    component: isOverview
+      ? sectionComponents[page.path]
       : isChairmansMessage
         ? ChairmansMessage
       : isAboutDetail
@@ -134,6 +133,10 @@ const routes = [
         path: "defense-and-security/airlandeep-international",
         redirect: "/defence/airlandeep-international",
       },
+      { path: "contact/contact-us", redirect: "/contact#enquiries" },
+      { path: "contact/careers", redirect: "/contact#careers" },
+      { path: "contact/partner-with-us", redirect: "/contact#partnerships" },
+      { path: "contact/locations", redirect: "/contact#location" },
       { path: "partnerships", redirect: "/investors/partnerships" },
       {
         path: ":pathMatch(.*)*",
@@ -153,7 +156,15 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior() {
+  scrollBehavior(to, _from, savedPosition) {
+    if (savedPosition) return savedPosition;
+    if (to.hash) {
+      return {
+        el: to.hash,
+        top: 96,
+        behavior: "smooth",
+      };
+    }
     return { top: 0 };
   },
 });

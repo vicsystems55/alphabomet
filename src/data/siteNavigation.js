@@ -130,13 +130,8 @@ export const navigation = [
   {
     label: "Contact",
     path: "/contact",
-    intro: "Start a conversation with the Alphabomet team.",
-    children: [
-      { label: "Contact Us", path: "/contact/contact-us" },
-      { label: "Careers", path: "/contact/careers" },
-      { label: "Partner With Us", path: "/contact/partner-with-us" },
-      { label: "Locations", path: "/contact/locations" },
-    ],
+    intro: "Enquiries, careers, partnerships and our Abuja presence in one place.",
+    children: [],
   },
 ];
 

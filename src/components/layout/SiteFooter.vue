@@ -5,7 +5,7 @@
         <p class="eyebrow">Alphabomet Holdings</p>
         <h2>Building Africa's next generation of enduring enterprises.</h2>
       </div>
-      <RouterLink to="/contact/partner-with-us" class="footer-cta">
+      <RouterLink to="/contact#partnerships" class="footer-cta">
         Start a conversation <ArrowUpRight :size="20" />
       </RouterLink>
     </div>
@@ -30,7 +30,7 @@
       <p>© {{ new Date().getFullYear() }} Alphabomet Holdings. All rights reserved.</p>
       <div>
         <RouterLink to="/about/governance-and-esg">Governance & ESG</RouterLink>
-        <RouterLink to="/contact/contact-us">Contact</RouterLink>
+        <RouterLink to="/contact">Contact</RouterLink>
       </div>
     </div>
   </footer>

@@ -1,4 +1,9 @@
-export const companyProfiles = [
+const liveCompanyWebsites = {
+  "bonstruction-engineering": "https://bonstruction.com",
+  provago: "https://provago.ng",
+};
+
+const profileDefinitions = [
   {
     slug: "saudhi-energy",
     name: "Saudhi Energy",
@@ -201,6 +206,11 @@ export const companyProfiles = [
     capabilities: ["Defence technology", "Surveillance systems", "Mission support"],
   },
 ];
+
+export const companyProfiles = profileDefinitions.map((company) => ({
+  ...company,
+  website: liveCompanyWebsites[company.slug] || "#",
+}));
 
 export const companyBySlug = Object.fromEntries(
   companyProfiles.map((company) => [company.slug, company]),

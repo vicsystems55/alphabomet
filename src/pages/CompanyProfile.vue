@@ -37,6 +37,17 @@
         </div>
 
         <p class="company-profile__lead">{{ company.overview }}</p>
+        <a
+          class="company-profile__website"
+          :class="{ 'company-profile__website--placeholder': !hasCompanyWebsite }"
+          :href="company.website"
+          :target="hasCompanyWebsite ? '_blank' : undefined"
+          :rel="hasCompanyWebsite ? 'noopener noreferrer' : undefined"
+          :aria-disabled="!hasCompanyWebsite"
+          @click="handleWebsiteClick"
+        >
+          {{ websiteLabel }} <ExternalLink :size="17" />
+        </a>
         <div class="company-profile__facts">
           <div v-if="company.strategicRole">
             <span>Strategic role</span>
@@ -94,7 +105,7 @@
     <section class="page-cta">
       <p class="eyebrow">A member company of Alphabomet Holdings</p>
       <h2>Building enterprises that power economies.</h2>
-      <RouterLink to="/contact/partner-with-us" class="button-gold">
+      <RouterLink to="/contact#partnerships" class="button-gold">
         Partner with us <ArrowRight :size="18" />
       </RouterLink>
     </section>
@@ -104,7 +115,7 @@
 <script setup>
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-import { ArrowRight, ChevronRight } from "@lucide/vue";
+import { ArrowRight, ChevronRight, ExternalLink } from "@lucide/vue";
 import CompanyLogo from "../components/shared/CompanyLogo.vue";
 import { companyBySlug } from "../data/companyProfiles";
 import buildingImage from "../assets/images/building.jpg";
@@ -113,6 +124,15 @@ import treeArt from "../assets/images/white-tree.png";
 
 const route = useRoute();
 const company = computed(() => companyBySlug[route.meta.companySlug]);
+const hasCompanyWebsite = computed(() => company.value?.website && company.value.website !== "#");
+const websiteLabel = computed(() => {
+  if (!hasCompanyWebsite.value) return "Website coming soon";
+
+  return `Visit ${new URL(company.value.website).hostname.replace(/^www\./, "")}`;
+});
+const handleWebsiteClick = (event) => {
+  if (!hasCompanyWebsite.value) event.preventDefault();
+};
 const initials = computed(() =>
   company.value?.name
     .split(" ")

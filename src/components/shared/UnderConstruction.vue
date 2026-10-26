@@ -24,7 +24,7 @@
         <RouterLink :to="parentPath" class="button-gold">
           Explore {{ section }} <ArrowRight :size="18" />
         </RouterLink>
-        <RouterLink to="/contact/contact-us" class="button-ghost">Contact us</RouterLink>
+        <RouterLink to="/contact" class="button-ghost">Contact us</RouterLink>
       </div>
     </div>
 

@@ -33,7 +33,7 @@ const items = [
     title: "Partner with us",
     description: "Build high-impact enterprises and create lasting value alongside Alphabomet.",
     label: "Explore opportunities",
-    path: "/contact/partner-with-us",
+    path: "/contact#partnerships",
   },
   {
     icon: TrendingUp,
