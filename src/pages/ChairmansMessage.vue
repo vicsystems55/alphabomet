@@ -21,9 +21,10 @@
         <header class="chairman-page__message-intro">
           <p>Chairman's Message <span>/ 2026</span></p>
           <h1 id="chairman-message-title">
-            Think global.<br />
-            Build strategically.<br />
-            <span>Create impact.</span>
+            Solving African<br />
+            Problems with<br />
+            Global Optimal<br />
+            <span>Solutions</span>
           </h1>
           <p>
             A perspective on purposeful leadership, enterprise development and
@@ -176,7 +177,7 @@ useHead({
   width: min(62rem, 100vw);
   max-width: none;
   height: auto;
-  filter: grayscale(1) contrast(1.08) brightness(.88);
+  filter: grayscale(1) contrast(1.04) brightness(1.06);
   transform: translateX(-50%);
 }
 
@@ -192,10 +193,11 @@ useHead({
   background: linear-gradient(
     90deg,
     #030303 0%,
-    rgba(3, 3, 3, .94) 9%,
-    rgba(3, 3, 3, .25) 38%,
-    rgba(3, 3, 3, .12) 62%,
-    rgba(3, 3, 3, .92) 92%,
+    rgba(3, 3, 3, .7) 8%,
+    rgba(3, 3, 3, .18) 30%,
+    rgba(3, 3, 3, .02) 50%,
+    rgba(3, 3, 3, .08) 72%,
+    rgba(3, 3, 3, .58) 94%,
     #030303 100%
   );
 }
@@ -204,10 +206,10 @@ useHead({
   background: linear-gradient(
     0deg,
     #030303 0%,
-    rgba(3, 3, 3, .98) 10%,
-    rgba(3, 3, 3, .58) 29%,
-    transparent 58%,
-    rgba(3, 3, 3, .35) 100%
+    rgba(3, 3, 3, .9) 8%,
+    rgba(3, 3, 3, .36) 24%,
+    transparent 48%,
+    rgba(3, 3, 3, .08) 100%
   );
 }
 
@@ -217,8 +219,8 @@ useHead({
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(circle at 72% 24%, rgba(255, 255, 255, .055), transparent 24%),
-    linear-gradient(90deg, rgba(255, 255, 255, .018) 1px, transparent 1px);
+    radial-gradient(circle at 72% 24%, rgba(255, 255, 255, .035), transparent 24%),
+    linear-gradient(90deg, rgba(255, 255, 255, .012) 1px, transparent 1px);
   background-size: auto, 6rem 100%;
   mask-image: linear-gradient(180deg, black, transparent 76%);
 }
@@ -575,7 +577,7 @@ useHead({
   .chairman-page__portrait-stage { height: 68rem; }
   .chairman-page__portrait-stage img { top: 5.2rem; left: 58%; width: min(53rem, 145vw); }
   .chairman-page__portrait-stage::before {
-    background: linear-gradient(90deg, rgba(3, 3, 3, .86), rgba(3, 3, 3, .25) 55%, rgba(3, 3, 3, .76));
+    background: linear-gradient(90deg, rgba(3, 3, 3, .58), rgba(3, 3, 3, .08) 55%, rgba(3, 3, 3, .42));
   }
   .chairman-page__message-intro { max-width: 31rem; margin-top: 5rem; }
   .chairman-page__message-intro h1 { font-size: clamp(3.6rem, 13vw, 5.5rem); }
