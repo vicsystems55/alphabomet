@@ -148,7 +148,7 @@ export const aboutPages = {
 };
 
 export const chairmansForeword = [
-  "Welcome to Alphabomet Holdings, a diversified investment holding company established with the vision of building world-class businesses that contribute meaningfully to economic growth, industrial transformation and sustainable development across Africa and beyond.",
+  "Welcome to Alphabomet Holdings, a Diversified Investment & Management Holding Company established with the vision of building world-class businesses that contribute meaningfully to economic growth, industrial transformation and sustainable development across Africa and beyond.",
   "Our journey is driven by a simple belief: that Africa possesses extraordinary potential, and through innovation, strategic investment and responsible leadership, we can transform industries, create opportunities and improve lives.",
   "Alphabomet Holdings was founded to unite high-growth businesses under a single corporate vision while encouraging operational excellence, innovation and long-term value creation. Our diversified portfolio spans technology, artificial intelligence, energy, mining, infrastructure, logistics, agriculture, defence and security, financial technology and digital government services.",
   "As we look toward the future, we remain committed to responsible corporate governance, environmental sustainability, technological advancement and inclusive economic development. Through strategic partnerships and continuous innovation, we aim to become one of Africa's most respected investment holding companies.",
@@ -187,7 +187,8 @@ export const chairmanProfile = {
     },
     {
       label: "Professional development",
-      value: "PMP, Human Resource Management and Client Service & Relationship Management",
+      value:
+        "Project Management (PMP), Human Resource Management (HRM), and Client Service & Relationship Management (CSRM), issued by the Nigerian Council for Management Development",
     },
     {
       label: "Safety leadership",

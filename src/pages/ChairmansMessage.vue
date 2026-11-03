@@ -172,7 +172,7 @@ useHead({
 .chairman-page__portrait-stage img {
   position: absolute;
   top: 4.5rem;
-  left: 50%;
+  left: 63%;
   display: block;
   width: min(62rem, 100vw);
   max-width: none;
@@ -575,7 +575,7 @@ useHead({
   .chairman-page__message-topbar { align-items: center; }
   .chairman-page__message-topbar > img { width: 9.5rem; }
   .chairman-page__portrait-stage { height: 68rem; }
-  .chairman-page__portrait-stage img { top: 5.2rem; left: 58%; width: min(53rem, 145vw); }
+  .chairman-page__portrait-stage img { top: 5.2rem; left: 64%; width: min(53rem, 145vw); }
   .chairman-page__portrait-stage::before {
     background: linear-gradient(90deg, rgba(3, 3, 3, .58), rgba(3, 3, 3, .08) 55%, rgba(3, 3, 3, .42));
   }
@@ -593,7 +593,7 @@ useHead({
   .chairman-page__message-topbar nav a,
   .chairman-page__message-topbar nav svg { display: none; }
   .chairman-page__message-topbar > img { width: 8.5rem; }
-  .chairman-page__portrait-stage img { left: 59%; width: 160vw; }
+  .chairman-page__portrait-stage img { left: 65%; width: 160vw; }
   .chairman-page__message-intro h1 { font-size: clamp(3.2rem, 15vw, 4.4rem); }
   .chairman-page__message-intro > p:last-child { font-size: .9rem; }
   .chairman-page__message-letter { margin-top: 7rem; }
