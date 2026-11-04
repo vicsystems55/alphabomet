@@ -32,6 +32,7 @@
         v-for="company in visibleCompanies"
         :key="company.slug"
         :to="companyPath(company)"
+        :aria-label="`${company.name} — ${company.sector}`"
         class="home-company-card"
       >
         <div class="home-company-card__logo">
@@ -43,7 +44,10 @@
           <span v-else>{{ initials(company.name) }}</span>
         </div>
         <div class="home-company-card__footer">
-          <p>{{ company.group }}</p>
+          <div class="home-company-card__labels">
+            <p>{{ company.group }}</p>
+            <small>{{ company.sector }}</small>
+          </div>
           <span><ArrowUpRight :size="13" /></span>
         </div>
       </RouterLink>
@@ -229,9 +233,13 @@ const initials = (name) =>
 
 .home-company-card__footer {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 0.5rem;
+}
+
+.home-company-card__labels {
+  min-width: 0;
 }
 
 .home-company-card__footer p {
@@ -243,8 +251,18 @@ const initials = (name) =>
   text-transform: uppercase;
 }
 
-.home-company-card__footer span {
+.home-company-card__labels small {
+  display: block;
+  margin-top: 0.3rem;
+  color: rgba(248, 244, 238, 0.78);
+  font-size: 0.67rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.home-company-card__footer > span {
   display: grid;
+  flex: none;
   width: 1.35rem;
   height: 1.35rem;
   place-items: center;
@@ -276,7 +294,7 @@ const initials = (name) =>
 
 @media (max-width: 540px) {
   .home-ecosystem__grid { grid-template-columns: repeat(2, 1fr); }
-  .home-company-card { min-height: 9rem; padding: 0.75rem; }
+  .home-company-card { min-height: 10rem; padding: 0.75rem; }
   .home-company-card__logo img { max-height: 4.2rem; }
 }
 </style>

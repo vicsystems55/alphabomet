@@ -5,7 +5,7 @@
   >
     <div class="site-header__inner">
       <RouterLink to="/" class="site-logo" aria-label="Alphabomet home" @click="closeAll">
-        <img :src="logo" alt="Alphabomet Holdings" />
+        <img :src="isDark ? logoWhite : logo" alt="Alphabomet Holdings" />
       </RouterLink>
 
       <nav class="desktop-nav" aria-label="Primary navigation">
@@ -140,10 +140,13 @@ import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { ArrowRight, ArrowUpRight, ChevronDown, Menu, X } from "@lucide/vue";
 import logo from "../../assets/images/logo.png";
+import logoWhite from "../../assets/images/logo-white.png";
+import { useTheme } from "../../composables/useTheme";
 import { navigation } from "../../data/siteNavigation";
 import ThemeToggle from "./ThemeToggle.vue";
 
 const route = useRoute();
+const { isDark } = useTheme();
 const isScrolled = ref(false);
 const openMenu = ref(null);
 const mobileOpen = ref(false);

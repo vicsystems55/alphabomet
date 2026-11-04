@@ -215,9 +215,6 @@ const goToSlide = (index) => swiperInstance?.slideToLoop(index);
   height: 4.6rem;
   place-items: center;
   padding: .65rem 1rem;
-  border: 1px solid rgba(220, 193, 144, .2);
-  background: rgba(5, 4, 4, .74);
-  backdrop-filter: blur(12px);
 }
 
 .portfolio-hero__logo img {
@@ -386,12 +383,6 @@ const goToSlide = (index) => swiperInstance?.slideToLoop(index);
     rgba(255, 255, 255, .64) 48%,
     rgba(255, 255, 255, .48) 100%
   );
-}
-
-.portfolio-hero--light .portfolio-hero__logo {
-  border-color: rgba(128, 20, 24, .16);
-  background: rgba(255, 255, 255, .86);
-  box-shadow: 0 .75rem 2rem rgba(47, 35, 33, .1);
 }
 
 .portfolio-hero--light .portfolio-hero__grid {

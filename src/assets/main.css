@@ -1847,10 +1847,6 @@ html[data-theme="light"] body .site-header--scrolled {
   box-shadow: 0 0.8rem 2.5rem rgba(47, 35, 33, 0.09);
 }
 
-html[data-theme="light"] body .site-logo img {
-  filter: saturate(1.2) contrast(1.12);
-}
-
 html[data-theme="light"] body .desktop-nav__link {
   color: #443b39;
   opacity: 1;
@@ -2200,6 +2196,10 @@ html[data-theme="light"] body .home-company-card:hover {
 
 html[data-theme="light"] body .home-company-card__logo img {
   filter: drop-shadow(0 0.35rem 0.7rem rgba(47, 35, 33, 0.1));
+}
+
+html[data-theme="light"] body .home-company-card__labels small {
+  color: var(--text-primary);
 }
 
 html[data-theme="light"] body .home-impact {

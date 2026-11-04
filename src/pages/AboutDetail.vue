@@ -1,5 +1,9 @@
 <template>
-  <div v-if="page" class="about-detail">
+  <div
+    v-if="page"
+    class="about-detail"
+    :class="{ 'about-detail--vision-mission': route.meta.aboutPage === 'our-vision-and-mission' }"
+  >
     <PageHero
       :eyebrow="page.eyebrow"
       :title="page.title"
@@ -129,6 +133,10 @@ const page = computed(() => aboutPages[route.meta.aboutPage]);
 .about-detail__statements article:last-child { border-right: 0; }
 .about-detail__statements .eyebrow { color: var(--gold); }
 .about-detail__statements h2 { max-width: 37rem; color: var(--cream); font-size: clamp(2.3rem, 3.7vw, 3.5rem); }
+.about-detail--vision-mission .about-detail__statements h2 {
+  font-size: clamp(1.15rem, 1.85vw, 1.75rem);
+  line-height: 1.3;
+}
 .about-detail__statements article > span { position: absolute; right: 2rem; bottom: -3rem; color: rgba(220,193,144,.06); font-family: var(--font-heading); font-size: 14rem; }
 
 .about-detail__strategy,
