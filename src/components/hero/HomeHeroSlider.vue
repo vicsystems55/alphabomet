@@ -25,7 +25,8 @@
             class="portfolio-hero__background"
             :style="{
               backgroundImage: `url(${slide.image})`,
-              backgroundPosition: slide.imagePosition,
+              '--hero-position': slide.imagePosition,
+              '--hero-position-mobile': slide.mobileImagePosition ?? slide.imagePosition,
             }"
           ></div>
           <div class="portfolio-hero__overlay"></div>
@@ -163,6 +164,7 @@ const goToSlide = (index) => swiperInstance?.slideToLoop(index);
 
 .portfolio-hero__background {
   z-index: 0;
+  background-position: var(--hero-position, center);
   background-repeat: no-repeat;
   background-size: cover;
   transform: scale(1.06);
@@ -443,6 +445,7 @@ const goToSlide = (index) => swiperInstance?.slideToLoop(index);
   .portfolio-hero :deep(.swiper-slide),
   .portfolio-hero__inner { min-height: max(45rem, 100svh); }
   .portfolio-hero__inner { width: calc(100% - 2.5rem); padding-top: 8rem; padding-bottom: 9rem; }
+  .portfolio-hero__background { background-position: var(--hero-position-mobile, var(--hero-position, center)); }
   .portfolio-hero__identity { align-items: flex-start; flex-direction: column; gap: .8rem; }
   .portfolio-hero__logo { width: 7.5rem; height: 3.7rem; }
   .portfolio-hero h1 { font-size: clamp(3.1rem, 14vw, 4.8rem); }

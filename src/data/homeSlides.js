@@ -1,8 +1,8 @@
-import agronomyImage from "../assets/slide-3.png";
-import bonstructionImage from "../assets/slide-1.png";
-import industrialImage from "../assets/slide-2.png";
-import energyImage from "../assets/images/globe.jpg";
-import fintechImage from "../assets/images/office.jpg";
+import agronomyImage from "../assets/images/slides/agronomy-agriculture.webp";
+import bonstructionImage from "../assets/images/slides/bonstruction-infrastructure.webp";
+import energyImage from "../assets/images/slides/saudhi-energy.webp";
+import fintechImage from "../assets/images/slides/paymanent-fintech.webp";
+import miningImage from "../assets/images/slides/underearth-mining.webp";
 
 export const homeSlides = [
   {
@@ -16,7 +16,8 @@ export const homeSlides = [
     buttonLink: "/businesses/infrastructure/bonstruction-engineering",
     image: bonstructionImage,
     logoKey: "bonstruction",
-    imagePosition: "center",
+    imagePosition: "65% center",
+    mobileImagePosition: "68% center",
   },
   {
     id: 2,
@@ -29,7 +30,8 @@ export const homeSlides = [
     buttonLink: "/businesses/energy/saudhi-energy",
     image: energyImage,
     logoKey: "saudhi",
-    imagePosition: "center",
+    imagePosition: "62% center",
+    mobileImagePosition: "68% center",
   },
   {
     id: 3,
@@ -43,6 +45,7 @@ export const homeSlides = [
     image: agronomyImage,
     logoKey: "agronomy",
     imagePosition: "center",
+    mobileImagePosition: "66% center",
   },
   {
     id: 4,
@@ -53,9 +56,10 @@ export const homeSlides = [
       "Developing Africa's mineral potential through responsible exploration, beneficiation and long-term value creation.",
     buttonText: "Explore Underearth",
     buttonLink: "/businesses/mining/underearth",
-    image: industrialImage,
+    image: miningImage,
     logoKey: "underearth",
-    imagePosition: "center",
+    imagePosition: "68% center",
+    mobileImagePosition: "72% center",
   },
   {
     id: 5,
@@ -68,6 +72,7 @@ export const homeSlides = [
     buttonLink: "/businesses/financial-services/paymanent",
     image: fintechImage,
     logoKey: "paymanent",
-    imagePosition: "center",
+    imagePosition: "72% center",
+    mobileImagePosition: "68% center",
   },
 ];
