@@ -16,10 +16,10 @@
         <p>A diversified African holding company creating sustainable value across essential sectors.</p>
       </div>
 
-      <div v-for="item in navigation.slice(0, 4)" :key="item.path">
+      <div v-for="item in footerNavigation" :key="item.path">
         <RouterLink :to="item.path" class="site-footer__title">{{ item.label }}</RouterLink>
         <ul>
-          <li v-for="child in item.children.slice(0, 4)" :key="child.path">
+          <li v-for="child in item.children" :key="child.path">
             <RouterLink :to="child.path">{{ child.label }}</RouterLink>
           </li>
         </ul>
@@ -40,4 +40,24 @@
 import { ArrowUpRight } from "@lucide/vue";
 import logo from "../../assets/images/logo.png";
 import { navigation } from "../../data/siteNavigation";
+
+const footerAnchors = {
+  "/impact": [
+    { label: "Economic Development", path: "/impact#economic-development" },
+    { label: "Sustainability", path: "/impact#sustainability" },
+    { label: "ESG", path: "/impact#esg" },
+    { label: "Communities", path: "/impact#communities" },
+  ],
+  "/investors": [
+    { label: "Investment Overview", path: "/investors#investment-overview" },
+    { label: "Portfolio", path: "/investors#portfolio" },
+    { label: "Strategy 2026–2028", path: "/investors#strategy-2026-2028" },
+    { label: "Partnerships", path: "/investors#partnerships" },
+  ],
+};
+
+const footerNavigation = navigation.slice(0, 4).map((item) => ({
+  ...item,
+  children: item.children.length ? item.children.slice(0, 4) : footerAnchors[item.path] || [],
+}));
 </script>

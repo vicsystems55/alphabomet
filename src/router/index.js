@@ -102,6 +102,42 @@ const contentRoutes = flatNavigation.map((page) => {
   };
 });
 
+const consolidatedSections = {
+  impact: [
+    "economic-development",
+    "sustainability",
+    "esg",
+    "communities",
+    "innovation",
+    "africa-first",
+  ],
+  investors: [
+    "investment-overview",
+    "why-invest",
+    "portfolio",
+    "strategy-2026-2028",
+    "growth-framework",
+    "partnerships",
+    "investor-contact",
+  ],
+  insights: [
+    "news",
+    "articles",
+    "press-releases",
+    "media",
+    "industry-insights",
+    "events",
+  ],
+};
+
+const consolidatedSectionRedirects = Object.entries(consolidatedSections).flatMap(
+  ([section, anchors]) =>
+    anchors.map((anchor) => ({
+      path: `${section}/${anchor}`,
+      redirect: `/${section}#${anchor}`,
+    })),
+);
+
 const routes = [
   {
     path: "/",
@@ -117,6 +153,7 @@ const routes = [
         },
       },
       ...contentRoutes,
+      ...consolidatedSectionRedirects,
       {
         path: "businesses/technology/paymanent",
         redirect: "/businesses/financial-services/paymanent",
@@ -137,7 +174,7 @@ const routes = [
       { path: "contact/careers", redirect: "/contact#careers" },
       { path: "contact/partner-with-us", redirect: "/contact#partnerships" },
       { path: "contact/locations", redirect: "/contact#location" },
-      { path: "partnerships", redirect: "/investors/partnerships" },
+      { path: "partnerships", redirect: "/investors#partnerships" },
       {
         path: ":pathMatch(.*)*",
         name: "not-found",
@@ -161,7 +198,7 @@ const router = createRouter({
     if (to.hash) {
       return {
         el: to.hash,
-        top: 96,
+        top: ["/impact", "/investors", "/insights"].includes(to.path) ? 154 : 96,
         behavior: "smooth",
       };
     }

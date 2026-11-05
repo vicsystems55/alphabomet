@@ -37,6 +37,7 @@
       <form id="enquiries" class="contact-form" @submit.prevent="submitEnquiry">
         <span id="careers" class="contact-form__anchor" aria-hidden="true"></span>
         <span id="partnerships" class="contact-form__anchor" aria-hidden="true"></span>
+        <span id="media" class="contact-form__anchor" aria-hidden="true"></span>
         <header>
           <p class="eyebrow">WhatsApp enquiry</p>
           <h2>How can we help?</h2>
@@ -154,6 +155,7 @@ watch(
   (hash) => {
     if (hash === "#careers") form.enquiryType = "Careers";
     if (hash === "#partnerships") form.enquiryType = "Partnerships and investment";
+    if (hash === "#media") form.enquiryType = "Media and communications";
   },
   { immediate: true },
 );

@@ -24,7 +24,7 @@
           <RouterLink to="/businesses" class="globe-hero__primary">
             Discover our ecosystem <ArrowRight :size="17" />
           </RouterLink>
-          <RouterLink to="/investors/strategy-2026-2028" class="globe-hero__secondary">
+          <RouterLink to="/investors#strategy-2026-2028" class="globe-hero__secondary">
             Our strategy 2026–2028 <ArrowRight :size="17" />
           </RouterLink>
         </div>
