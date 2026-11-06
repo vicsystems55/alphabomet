@@ -20,7 +20,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo-white.png";
 
 const router = useRouter();
 const visible = ref(true);
